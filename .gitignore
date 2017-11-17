@@ -1,0 +1,6 @@
+/.idea
+/lib
+/config
+/public
+/node_modules
+/*.log

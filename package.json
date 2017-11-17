@@ -1,0 +1,57 @@
+{
+  "name": "cryptonote-universal-pool-list",
+  "version": "1.0.0",
+  "description": "The most comprehensive list of cryptonote-universal-pool's instances.",
+  "private": true,
+  "main": "lib/index.js",
+  "scripts": {
+    "deploy": "scripts/deploy.sh",
+    "start": "node lib/index.js",
+    "build": "rimraf lib && babel src/back -d lib && webpack -p",
+    "watch:front": "webpack-dev-server --open --hot --inline",
+    "watch:back": "nodemon --watch src --ignore src/front --exec babel-node src/back/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmorin/cryptonote-universal-pool-list.git"
+  },
+  "author": "Thibault Morin",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "bootstrap": "^4.0.0-beta.2",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.2.0",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "font-awesome": "^4.7.0",
+    "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.2.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "moment": "^2.19.2",
+    "nodemon": "^1.12.1",
+    "popper.js": "^1.12.9",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "url-parse": "^1.2.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "glob": "^7.1.2",
+    "request": "^2.83.0"
+  }
+}

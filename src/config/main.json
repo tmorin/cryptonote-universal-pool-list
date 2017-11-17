@@ -1,0 +1,51 @@
+{
+  "currency": {
+    "name": "Intense Coin",
+    "short_name": "Intense",
+    "symbol": "ITNS"
+  },
+  "links": {
+    "intensecoin.com": {
+      "icon": "fa fa-home",
+      "url": "https://intensecoin.com"
+    },
+    "coinmarketcap.com": {
+      "icon": "fa fa-money",
+      "url": "https://coinmarketcap.com/currencies/intensecoin"
+    },
+    "github.com": {
+      "icon": "fa fa-github",
+      "url": "https://github.com/valiant1x/intensecoin"
+    }
+  },
+  "exchanges": {
+    "stocks.exchange": {
+      "logo": "images/logo.stocks.exchange.png",
+      "url": "https://stocks.exchange/trade/ITNS/BTC"
+    }
+  },
+  "coinmarket": {
+    "currency": "intensecoin",
+    "base": "USD",
+    "secondary": "BTC",
+    "ticker": "true",
+    "rank": "true",
+    "marketcap": "true",
+    "volume": "true",
+    "stats": "USD",
+    "statsticker": "false"
+  },
+  "donations": {
+    "ITNS": "iz4gonVSZ1AiaxqBy9FZwFLu671VhTcfAjRfWUvmNjNV2K1xSrzr6WCRJHG8ib92rKDWMYLqq8jbU7LZMqbavGir1aCRWLnw4",
+    "BTC": "13jXtnauRQf4eqXUQmH2MnAHLSp5Wefmjd"
+  },
+  "administrator": {
+    "email": "intensecoin-pools@morin.io"
+  },
+  "analytic": {
+    "ga": "UA-20179310-9"
+  },
+  "worker": {
+    "interval_ms": 300000
+  }
+}

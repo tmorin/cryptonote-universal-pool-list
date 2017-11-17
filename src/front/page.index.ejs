@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title><%= htmlWebpackPlugin.options.config.currency.name %> Mining Pool List</title>
+
+    <meta property="og:title" content="<%= htmlWebpackPlugin.options.config.currency.name %> Mining Pool List">
+    <meta property="og:description" content="The most comprehensive mining pool list for <%= htmlWebpackPlugin.options.config.currency.name %>.">
+    <meta property="og:locale" content="en">
+
+    <meta property="x:app:version" content="<%= htmlWebpackPlugin.options.pkg.version %>">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="manifest" href="images/icons/manifest.json">
+    <link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <meta name="msapplication-config" content="images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+<body style="display: none;">
+
+<header class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h1>The <%= htmlWebpackPlugin.options.config.currency.short_name %> Mining Pool List</h1>
+                <p class="lead">Welcome to the most comprehensive mining pool list for <%= htmlWebpackPlugin.options.config.currency.name %>.</p>
+                <% if (htmlWebpackPlugin.options.config.links) { %>
+                    <ul class="nav">
+                        <%
+                            var links = htmlWebpackPlugin.options.config.links;
+                            var linkKeys = Object.keys(htmlWebpackPlugin.options.config.links);
+                            linkKeys.forEach(function (key) {
+                            var link = links[key];
+                        %>
+                            <li class="nav-item">
+                                <a target="_blank" class="nav-link" href="<%= link.url %>">
+                                    <i class="<%= link.icon %>"></i>
+                                    <%= key %>
+                                </a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } %>
+            </div>
+            <% if (htmlWebpackPlugin.options.config.coinmarket) { %>
+            <div class="col-sm-12 col-md-6">
+                <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+                <div class="coinmarketcap-currency-widget"
+                     data-currency="<%= htmlWebpackPlugin.options.config.coinmarket.currency %>"
+                     data-base="<%= htmlWebpackPlugin.options.config.coinmarket.base %>"
+                     data-secondary="<%= htmlWebpackPlugin.options.config.coinmarket.secondary %>"
+                     data-ticker="<%= htmlWebpackPlugin.options.config.coinmarket.ticker %>"
+                     data-rank="<%= htmlWebpackPlugin.options.config.coinmarket.rank %>"
+                     data-marketcap="<%= htmlWebpackPlugin.options.config.coinmarket.marketcap %>"
+                     data-volume="<%= htmlWebpackPlugin.options.config.coinmarket.volume %>"
+                     data-stats="<%= htmlWebpackPlugin.options.config.coinmarket.stats %>"
+                     data-statsticker="<%= htmlWebpackPlugin.options.config.coinmarket.statsticker %>"
+                ></div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</header>
+
+<section class="jumbotron jumbotron-fluid jumbotron-transparent">
+    <div class="container-fluid">
+        <h2 class="text-center">
+            Pools
+            <a href="#" class="btn btn-sm btn-link" type="button" data-toggle="modal" data-target="#howToRegisterServerDialog">
+                <small>
+                    <i class="fa fa-plus"></i>
+                    register a new pool
+                </small>
+            </a>
+            <a href="#" class="btn btn-sm btn-link" type="button" data-toggle="modal" data-target="#howToUpdateServerDialog">
+                <small>
+                    <i class="fa fa-edit"></i>
+                    update/remove a registered pool
+                </small>
+            </a>
+        </h2>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <table id="serverTable" class="table table-striped table-responsive">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            Name
+                            <i title="Cells are colored according to the SSL/TLS security of pools's front and back."
+                               data-toggle="tooltip" class="fa fa-fw fa-question-circle-o"></i>
+                        </th>
+                        <th>Location</th>
+                        <th class="text-right">Fee</th>
+                        <th class="text-right">Minimum Payment</th>
+                        <th class="text-right">Hashrate</th>
+                        <th class="text-right">Blocks Found</th>
+                        <th class="text-right">Last Blocks Found</th>
+                        <th class="text-right">Connected Miners</th>
+                        <th class="text-right">Total Miners Paid</th>
+                        <th class="text-right">Total Payments</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <ul class="list-unstyled list-inline text-center">
+                    <li class="list-inline-item">
+                    <small class="text-white" id="poolsUpdatedOn"></small>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-sm btn-link" name="refreshServers" type="button">
+                            <i class="fa fa-refresh"></i>
+                            refresh
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="howToRegisterServerDialog" tabindex="-1" role="dialog" aria-labelledby="howToRegisterServerLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="howToRegisterServerLabel">How to register a pool?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>In order to successfully register your pool the following information are expected:</p>
+                <ul>
+                    <li>the display name (the column <code>name</code>)</li>
+                    <li>the front's URL</li>
+                    <li>the back's URL</li>
+                    <li>the pool's location</li>
+                </ul>
+                <p>For instance, about the official pool, the data are</p>
+                <dl class="row">
+                    <dt class="col-sm-3">name</dt>
+                    <dd class="col-sm-9">intensecoin.com</dd>
+                    <dt class="col-sm-3">front</dt>
+                    <dd class="col-sm-9">http://intensecoin.com/pool</dd>
+                    <dt class="col-sm-3">back</dt>
+                    <dd class="col-sm-9">http://45.32.171.89:8111</dd>
+                    <dt class="col-sm-3">location</dt>
+                    <dd class="col-sm-9">unknown</dd>
+                </dl>
+                <p>
+                    Once done, please send an email to
+                    <a href="mailto:intensecoin-pools@morin.io">intensecoin-pools@morin.io</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="howToUpdateServerDialog" tabindex="-1" role="dialog" aria-labelledby="howToUpdateServerLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="howToUpdateServerLabel">How to update/remove a pool?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Please, send an email to
+                    <a href="mailto:intensecoin-pools@morin.io">intensecoin-pools@morin.io</a>
+                    telling what should be done.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if (htmlWebpackPlugin.options.config.exchanges) { %>
+<section class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h2 class="text-center">Exchanges</h2>
+        <br>
+        <ul class="list-unstyled list-inline text-center">
+            <%
+                var exchanges = htmlWebpackPlugin.options.config.exchanges;
+                var exchangeKeys = Object.keys(htmlWebpackPlugin.options.config.exchanges);
+            exchangeKeys.forEach(function (key) {
+                var exchange = exchanges[key];
+            %>
+            <li class="list-inline-item">
+                <a target="_blank" class="nav-link" href="<%= exchange.url %>">
+                    <img src="<%= exchange.logo %>" alt="<%= key %>" />
+                </a>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+</section>
+<% } %>
+
+<section class="jumbotron jumbotron-fluid jumbotron-transparent">
+    <div class="container">
+        <h2 class="text-center">Donations are welcome!</h2>
+
+        <% if (htmlWebpackPlugin.options.config.links) { %>
+        <div class="lead">Donation for administration</div>
+        <dl>
+            <%
+                var donations = htmlWebpackPlugin.options.config.donations;
+                var donationKeys = Object.keys(htmlWebpackPlugin.options.config.donations);
+                donationKeys.forEach(function (key) {
+                var address = donations[key];
+            %>
+                <dt><%= key %></dt>
+                <dd style="word-wrap: break-word;"><%= address %></dd>
+            <%  }) %>
+        </dl>
+        <% } %>
+
+        <hr class="invisible">
+
+        <div class="lead">Donation for development</div>
+        <dl>
+            <dt>BTC</dt>
+            <dd style="word-wrap: break-word;">13jXtnauRQf4eqXUQmH2MnAHLSp5Wefmjd</dd>
+        </dl>
+    </div>
+</section>
+
+<footer class="container">
+    <div class="text-center">
+        <small>
+            Powered by
+            <a target="_blank" href="https://github.com/tmorin/cryptonote-universal-pool-list">
+                <i class="fa fa-github"></i>
+                cryptonote-universal-pool-list
+            </a>
+            <%= htmlWebpackPlugin.options.pkg.version %> open sourced under the
+            <a target="_blank" href="https://github.com/tmorin/cryptonote-universal-pool-list/blob/master/LICENSE">
+                GPL
+            </a>
+            <%
+                var adminEmail = htmlWebpackPlugin.options.config.administrator && htmlWebpackPlugin.options.config.administrator.email;
+                if (adminEmail) {
+            %>
+                -
+                <a href="mailto:<%= adminEmail %>"><%= adminEmail %></a>
+            <%  } %>
+        </small>
+    </div>
+</footer>
+
+<%
+    var analytic = htmlWebpackPlugin.options.config.analytic;
+    if (analytic && analytic.ga) {
+%>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<%= analytic.ga %>"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<%= analytic.ga %>');
+</script>
+<% } %>
+
+</body>
+
+</html>
