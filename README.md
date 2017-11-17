@@ -18,7 +18,7 @@
 
 ## Customization
 
-In order to run you own cryptonote-universal-pool-list, you have to fork this repository.
+In order to run you own `cryptonote-universal-pool-list`, you have to fork this repository.
 Then from your own repository, follow the documentation below and override stuff which sould be overridden.
 
 ### Main configuration
