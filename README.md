@@ -181,7 +181,7 @@ For instance:
 `cryptonote-universal-pool-list` is ready to be deployed over docker.
 There is script doing the stuff: `scripts/deploy.sh`.
 The script is expecting to be run in a docker environment where [nginx-proxy] and [docker-letsencrypt-nginx-proxy-companion] are ready.
-To customize the domain name and SSL configuration, the following environment variable has to be customized: 
+To customize the domain name and SSL configuration, the following environment variables have to be customized: 
 - ENV_NAME
 - VIRTUAL_HOST
 - LETSENCRYPT_HOST
