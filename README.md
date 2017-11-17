@@ -114,7 +114,7 @@ Before the footer of the front page, a donations block can be displayed accordin
 }
 ```
 
-### administrator
+#### administrator
 
 The *administrator domain* is there to setup the administrator details like the email.
 
@@ -126,7 +126,7 @@ The *administrator domain* is there to setup the administrator details like the 
 }
 ```
 
-### analytic
+#### analytic
 
 To activate Google Analytic, the 
 
@@ -138,7 +138,7 @@ To activate Google Analytic, the
 }
 ```
 
-### worker
+#### worker
 
 The *domain worker* is dedicated to the back part.
 `interval_ms` is interval between to refresh of the stats. By default the value is 5 minutes.
@@ -151,7 +151,7 @@ The *domain worker* is dedicated to the back part.
 }
 ```
 
-### Icons
+#### Icons
 
 The icons of the front page has to be customized there: `src/front/images/icons`.
 
