@@ -1,0 +1,6 @@
+{
+  "name": "intensecoin.net",
+  "front": "https://pool.intensecoin.net",
+  "back": "https://pool.intensecoin.net/api",
+  "location": "EU"
+}
