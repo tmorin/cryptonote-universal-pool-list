@@ -16,9 +16,10 @@
 
 .jumbotron {
   margin-bottom: 0;
-}
-
-.jumbotron-transparent {
-  background: transparent;
-  border: 0;
+  &:nth-child(odd) {
+  }
+  &:nth-child(even) {
+    background: transparent;
+    border: 0;
+  }
 }
