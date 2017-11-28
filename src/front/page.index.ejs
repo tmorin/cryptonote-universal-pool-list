@@ -183,29 +183,6 @@
     </div>
 </div>
 
-<% if (htmlWebpackPlugin.options.config.exchanges) { %>
-<section class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h2 class="text-center">Exchanges</h2>
-        <br>
-        <ul class="list-unstyled list-inline text-center">
-            <%
-                var exchanges = htmlWebpackPlugin.options.config.exchanges;
-                var exchangeKeys = Object.keys(htmlWebpackPlugin.options.config.exchanges);
-            exchangeKeys.forEach(function (key) {
-                var exchange = exchanges[key];
-            %>
-            <li class="list-inline-item">
-                <a target="_blank" class="nav-link" href="<%= exchange.url %>">
-                    <img src="<%= exchange.logo %>" alt="<%= key %>" />
-                </a>
-            </li>
-            <% }) %>
-        </ul>
-    </div>
-</section>
-<% } %>
-
 <section class="jumbotron jumbotron-fluid">
     <div class="container">
         <h2 class="text-center">Ads</h2>
@@ -230,6 +207,29 @@
         </div>
     </div>
 </section>
+
+<% if (htmlWebpackPlugin.options.config.exchanges) { %>
+<section class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h2 class="text-center">Exchanges</h2>
+        <br>
+        <ul class="list-unstyled list-inline text-center">
+            <%
+                var exchanges = htmlWebpackPlugin.options.config.exchanges;
+                var exchangeKeys = Object.keys(htmlWebpackPlugin.options.config.exchanges);
+            exchangeKeys.forEach(function (key) {
+                var exchange = exchanges[key];
+            %>
+            <li class="list-inline-item">
+                <a target="_blank" class="nav-link" href="<%= exchange.url %>">
+                    <img src="<%= exchange.logo %>" alt="<%= key %>" />
+                </a>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+</section>
+<% } %>
 
 <section class="jumbotron jumbotron-fluid">
     <div class="container">
