@@ -2,6 +2,7 @@
   "currency": {
     "name": "Bitsum",
     "short_name": "Bitsum",
+    "tech_name": "bitsum",
     "symbol": "BSM"
   },
   "links": {

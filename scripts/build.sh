@@ -1,13 +1,26 @@
 #!/usr/bin/env sh
 
-currency=$1
+CURRENCY=$1
+CONTAINER_NAME="$CURRENCY-universal-pool-list"
+VIRTUAL_HOST="$CURRENCY-pools.morin.io,$CURRENCY-pools.containers"
+VIRTUAL_PORT=8888
+LETSENCRYPT_HOST="$CURRENCY-pools.morin.io"
+LETSENCRYPT_EMAIL="$CURRENCY-pools@morin.io"
 
-docker kill cryptonote-universal-pool-list
-docker rm cryptonote-universal-pool-list
+echo "deploying $CONTAINER_NAME"
+echo "CURRENCY: $CURRENCY"
+echo "VIRTUAL_HOST: $VIRTUAL_HOST"
+echo "VIRTUAL_PORT: $VIRTUAL_PORT"
+echo "LETSENCRYPT_HOST: $LETSENCRYPT_HOST"
+echo "LETSENCRYPT_EMAIL: $LETSENCRYPT_EMAIL"
+echo "CONTAINER_NAME: $CONTAINER_NAME"
 
-docker build --tag cryptonote-universal-pool-list .
-docker run --name cryptonote-universal-pool-list \
-    -e VIRTUAL_HOST=${currency}-pools.morin.io,${currency}-pools.containers \
+docker kill ${CONTAINER_NAME}
+docker rm ${CONTAINER_NAME}
+
+docker build --tag ${CONTAINER_NAME} .
+docker run --network=containers --name ${CONTAINER_NAME} \
+    -e VIRTUAL_HOST=${VIRTUAL_HOST} \
     -e VIRTUAL_PORT=8888 \
-    -e CURRENCY=${currency} \
-    cryptonote-universal-pool-list
+    -e CURRENCY=${CURRENCY} \
+    ${CONTAINER_NAME}

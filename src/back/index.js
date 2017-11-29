@@ -10,6 +10,7 @@ if (!currency) {
 }
 console.log('currency', currency);
 const config = require(`../config/${currency}.json`);
+console.log('config', config);
 
 const app = express();
 

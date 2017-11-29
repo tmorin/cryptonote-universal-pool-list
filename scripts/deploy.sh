@@ -2,7 +2,7 @@
 
 CURRENCY=$1
 CONTAINER_NAME="$CURRENCY-universal-pool-list"
-VIRTUAL_HOST="$CURRENCY-pools.morin.io"
+VIRTUAL_HOST="$CURRENCY-pools.morin.io,$CURRENCY-pools.containers"
 VIRTUAL_PORT=8888
 LETSENCRYPT_HOST="$CURRENCY-pools.morin.io"
 LETSENCRYPT_EMAIL="$CURRENCY-pools@morin.io"
