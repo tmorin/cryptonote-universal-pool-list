@@ -2,6 +2,7 @@
   "currency": {
     "name": "Intense Coin",
     "short_name": "Intense",
+    "tech_name": "intensecoin",
     "symbol": "ITNS"
   },
   "links": {

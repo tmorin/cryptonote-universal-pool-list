@@ -1,0 +1,30 @@
+{
+  "currency": {
+    "name": "Bitsum",
+    "short_name": "Bitsum",
+    "symbol": "BSM"
+  },
+  "links": {
+    "bitsum.uz": {
+      "icon": "fa fa-home",
+      "url": "http://bitsum.uz"
+    },
+    "github.com": {
+      "icon": "fa fa-github",
+      "url": "https://github.com/4egod/BitsumCore"
+    }
+  },
+  "donations": {
+    "ITNS": "iz4gonVSZ1AiaxqBy9FZwFLu671VhTcfAjRfWUvmNjNV2K1xSrzr6WCRJHG8ib92rKDWMYLqq8jbU7LZMqbavGir1aCRWLnw4",
+    "BTC": "13jXtnauRQf4eqXUQmH2MnAHLSp5Wefmjd"
+  },
+  "administrator": {
+    "email": "bitsum-pools@morin.io"
+  },
+  "analytic": {
+    "ga": "UA-20179310-9"
+  },
+  "worker": {
+    "interval_ms": 300000
+  }
+}

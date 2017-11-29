@@ -3,11 +3,19 @@ import request from 'request';
 import glob from 'glob';
 import path from 'path';
 import fs from 'fs';
-import config from '../config/main.json';
+
+const currency = process.env.CURRENCY;
+if (!currency) {
+    throw new Error('No currency provided as environment variable!');
+}
+console.log('currency', currency);
+const config = require(`../config/${currency}.json`);
 
 const app = express();
 
-app.use(express.static('public', {}));
+app.use(express.static('public', {
+    index: `${currency}.html`
+}));
 
 request.defaults({
     strictSSL: false
@@ -23,7 +31,7 @@ let updatedOn = (new Date()).toISOString();
 
 function loadServers() {
     return new Promise((resolve, reject) => {
-        glob('../config/servers/**/*.json', {
+        glob(`../config/${currency}/**/*.json`, {
             cwd: __dirname
         }, (error, files) => {
             if (error) {
@@ -99,10 +107,10 @@ function fetchAllStats() {
     return loadServers()
         .then(servers => Promise.all(servers.map(fetchStats)))
         .then(servers => {
-        cache = servers;
-        updatedOn = (new Date()).toISOString();
-        return servers;
-    });
+            cache = servers;
+            updatedOn = (new Date()).toISOString();
+            return servers;
+        });
 }
 
 setInterval(function () {

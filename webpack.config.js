@@ -1,10 +1,23 @@
 const webpack = require('webpack');
 const path = require('path');
 const pkg = require('./package.json');
-const config = require('./src/config/main.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+function htmlWebpackPluginFactory(currency) {
+    return new HtmlWebpackPlugin({
+        template: 'src/front/page.index.ejs',
+        chunks: ['index'],
+        filename: `${currency}.html`,
+        config: require(`./src/config/${currency}.json`),
+        minify: {
+            collapseInlineTagWhitespace: false,
+            collapseWhitespace: true
+        },
+        pkg
+    });
+}
 
 module.exports = {
     devtool: ' source-map',
@@ -23,16 +36,8 @@ module.exports = {
             'window.jQuery': 'jquery',
             Popper: ['popper.js', 'default']
         }),
-        new HtmlWebpackPlugin({
-            template: 'src/front/page.index.ejs',
-            chunks: ['index'],
-            filename: 'index.html',
-            pkg, config,
-            minify: {
-                collapseInlineTagWhitespace: false,
-                collapseWhitespace: true
-            }
-        }),
+        htmlWebpackPluginFactory('intensecoin'),
+        htmlWebpackPluginFactory('bitsum'),
         new CopyWebpackPlugin([
             {from: './src/front', to: '../public', toType: 'dir'},
             {from: './src/config', to: '../config', toType: 'dir'}

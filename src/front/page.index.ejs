@@ -12,15 +12,16 @@
 
     <meta property="x:app:version" content="<%= htmlWebpackPlugin.options.pkg.version %>">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
-    <link rel="manifest" href="images/icons/manifest.json">
-    <link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="images/icons/favicon.ico">
-    <meta name="msapplication-config" content="images/icons/browserconfig.xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/favicon-16x16.png">
+    <link rel="manifest" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/manifest.json">
+    <link rel="mask-icon" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/favicon.ico">
+    <meta name="msapplication-config" content="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
+    <% var adminEmail = htmlWebpackPlugin.options.config.administrator && htmlWebpackPlugin.options.config.administrator.email; %>
 </head>
 <body style="display: none;">
 
@@ -29,23 +30,24 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <h1>The <%= htmlWebpackPlugin.options.config.currency.short_name %> Mining Pool List</h1>
-                <p class="lead">Welcome to the most comprehensive mining pool list for <%= htmlWebpackPlugin.options.config.currency.name %>.</p>
+                <p class="lead">Welcome to the most comprehensive mining pool list
+                    for <%= htmlWebpackPlugin.options.config.currency.name %>.</p>
                 <% if (htmlWebpackPlugin.options.config.links) { %>
-                    <ul class="nav">
-                        <%
-                            var links = htmlWebpackPlugin.options.config.links;
-                            var linkKeys = Object.keys(htmlWebpackPlugin.options.config.links);
-                            linkKeys.forEach(function (key) {
-                            var link = links[key];
-                        %>
-                            <li class="nav-item">
-                                <a target="_blank" class="nav-link" href="<%= link.url %>">
-                                    <i class="<%= link.icon %>"></i>
-                                    <%= key %>
-                                </a>
-                            </li>
-                        <% }) %>
-                    </ul>
+                <ul class="nav">
+                    <%
+                        var links = htmlWebpackPlugin.options.config.links;
+                        var linkKeys = Object.keys(htmlWebpackPlugin.options.config.links);
+                    linkKeys.forEach(function (key) {
+                        var link = links[key];
+                    %>
+                    <li class="nav-item">
+                        <a target="_blank" class="nav-link" href="<%= link.url %>">
+                            <i class="<%= link.icon %>"></i>
+                            <%= key %>
+                        </a>
+                    </li>
+                    <% }) %>
+                </ul>
                 <% } %>
             </div>
             <% if (htmlWebpackPlugin.options.config.coinmarket) { %>
@@ -72,13 +74,15 @@
     <div class="container-fluid">
         <h2 class="text-center">
             Pools
-            <a href="#" class="btn btn-sm btn-link" type="button" data-toggle="modal" data-target="#howToRegisterServerDialog">
+            <a href="#" class="btn btn-sm btn-link" type="button" data-toggle="modal"
+               data-target="#howToRegisterServerDialog">
                 <small>
                     <i class="fa fa-plus"></i>
                     register a new pool
                 </small>
             </a>
-            <a href="#" class="btn btn-sm btn-link" type="button" data-toggle="modal" data-target="#howToUpdateServerDialog">
+            <a href="#" class="btn btn-sm btn-link" type="button" data-toggle="modal"
+               data-target="#howToUpdateServerDialog">
                 <small>
                     <i class="fa fa-edit"></i>
                     update/remove a registered pool
@@ -112,7 +116,7 @@
                 </table>
                 <ul class="list-unstyled list-inline text-center">
                     <li class="list-inline-item">
-                    <small class="text-white" id="poolsUpdatedOn"></small>
+                        <small class="text-white" id="poolsUpdatedOn"></small>
                     </li>
                     <li class="list-inline-item">
                         <a href="#" class="btn btn-sm btn-link" name="refreshServers" type="button">
@@ -126,7 +130,8 @@
     </div>
 </section>
 
-<div class="modal fade" id="howToRegisterServerDialog" tabindex="-1" role="dialog" aria-labelledby="howToRegisterServerLabel" aria-hidden="true">
+<div class="modal fade" id="howToRegisterServerDialog" tabindex="-1" role="dialog"
+     aria-labelledby="howToRegisterServerLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -156,14 +161,15 @@
                 </dl>
                 <p>
                     Once done, please send an email to
-                    <a href="mailto:intensecoin-pools@morin.io">intensecoin-pools@morin.io</a>
+                    <a href="mailto:<%= adminEmail %>"><%= adminEmail %></a>
                 </p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="howToUpdateServerDialog" tabindex="-1" role="dialog" aria-labelledby="howToUpdateServerLabel" aria-hidden="true">
+<div class="modal fade" id="howToUpdateServerDialog" tabindex="-1" role="dialog"
+     aria-labelledby="howToUpdateServerLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -175,7 +181,7 @@
             <div class="modal-body">
                 <p>
                     Please, send an email to
-                    <a href="mailto:intensecoin-pools@morin.io">intensecoin-pools@morin.io</a>
+                    <a href="mailto:<%= adminEmail %>"><%= adminEmail %></a>
                     telling what should be done.
                 </p>
             </div>
@@ -190,17 +196,20 @@
             <ul class="list-unstyled list-inline">
                 <li class="list-inline-item">
                     <a href="https://hashflare.io/r/240F0672" target="_blank">
-                        <img class="rounded" width="150" height="150" src="images/sponsor/hf_250x250_eng.gif" alt="HashFlare">
+                        <img class="rounded" width="150" height="150" src="images/sponsor/hf_250x250_eng.gif"
+                             alt="HashFlare">
                     </a>
                 </li>
                 <li class="list-inline-item">
                     <a href="https://www.genesis-mining.com/a/1934276" target="_blank">
-                        <img class="rounded" width="150" height="150" src="images/sponsor/gm_150x150_en.gif" alt="GenesisMining">
+                        <img class="rounded" width="150" height="150" src="images/sponsor/gm_150x150_en.gif"
+                             alt="GenesisMining">
                     </a>
                 </li>
                 <li class="list-inline-item">
                     <a href="https://minergate.com/a/534dace5d63654ed3a25291f" target="_blank">
-                        <img class="rounded" width="150" height="150" src="images/sponsor/mg_250x250_en.png" alt="Minergate"/>
+                        <img class="rounded" width="150" height="150" src="images/sponsor/mg_250x250_en.png"
+                             alt="Minergate"/>
                     </a>
                 </li>
             </ul>
@@ -217,14 +226,14 @@
             <%
                 var exchanges = htmlWebpackPlugin.options.config.exchanges;
                 var exchangeKeys = Object.keys(htmlWebpackPlugin.options.config.exchanges);
-            exchangeKeys.forEach(function (key) {
-                var exchange = exchanges[key];
+                exchangeKeys.forEach(function (key) {
+                    var exchange = exchanges[key];
             %>
-            <li class="list-inline-item">
-                <a target="_blank" class="nav-link" href="<%= exchange.url %>">
-                    <img src="<%= exchange.logo %>" alt="<%= key %>" />
-                </a>
-            </li>
+                <li class="list-inline-item">
+                    <a target="_blank" class="nav-link" href="<%= exchange.url %>">
+                        <img src="<%= exchange.logo %>" alt="<%= key %>"/>
+                    </a>
+                </li>
             <% }) %>
         </ul>
     </div>
@@ -242,7 +251,7 @@
                 var donations = htmlWebpackPlugin.options.config.donations;
                 var donationKeys = Object.keys(htmlWebpackPlugin.options.config.donations);
                 donationKeys.forEach(function (key) {
-                var address = donations[key];
+                    var address = donations[key];
             %>
                 <dt><%= key %></dt>
                 <dd style="word-wrap: break-word;"><%= address %></dd>
@@ -273,28 +282,29 @@
                 GPL
             </a>
             <%
-                var adminEmail = htmlWebpackPlugin.options.config.administrator && htmlWebpackPlugin.options.config.administrator.email;
-                if (adminEmail) {
+            if (adminEmail) {
             %>
-                -
-                <a href="mailto:<%= adminEmail %>"><%= adminEmail %></a>
-            <%  } %>
+            -
+            <a href="mailto:<%= adminEmail %>"><%= adminEmail %></a>
+            <% } %>
         </small>
     </div>
 </footer>
 
 <%
-    var analytic = htmlWebpackPlugin.options.config.analytic;
-    if (analytic && analytic.ga) {
+var analytic = htmlWebpackPlugin.options.config.analytic;
+if (analytic && analytic.ga) {
 %>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<%= analytic.ga %>"></script>
 <script>
+    var gaPage = '/<%= htmlWebpackPlugin.options.config.currency.tech_name %>';
+    console.log('gaPage', gaPage);
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() {dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', '<%= analytic.ga %>');
+    gtag('send', 'page', gaPage);
 </script>
 <% } %>
 
