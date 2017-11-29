@@ -1,15 +1,13 @@
 #!/usr/bin/env sh
 
 CURRENCY=$1
-ENV_NAME="$CURRENCY-universal-pool-list"
+CONTAINER_NAME="$CURRENCY-universal-pool-list"
 VIRTUAL_HOST="$CURRENCY-pools.morin.io"
 VIRTUAL_PORT=8888
 LETSENCRYPT_HOST="$CURRENCY-pools.morin.io"
 LETSENCRYPT_EMAIL="$CURRENCY-pools@morin.io"
-CONTAINER_NAME="$CURRENCY-universal-pool-list"
 
 echo "deploying $CONTAINER_NAME"
-echo "ENV_NAME: $ENV_NAME"
 echo "VIRTUAL_HOST: $VIRTUAL_HOST"
 echo "VIRTUAL_PORT: $VIRTUAL_PORT"
 echo "LETSENCRYPT_HOST: $LETSENCRYPT_HOST"
@@ -20,7 +18,7 @@ docker build --rm -t ${CONTAINER_NAME} .
 docker rm -f ${CONTAINER_NAME}
 docker run -d --network=containers --restart always --name ${CONTAINER_NAME} \
     -e CURRENCY=${CURRENCY} \
-    -e ENV_NAME=${ENV_NAME} \
+    -e ENV_NAME=${CONTAINER_NAME} \
     -e VIRTUAL_HOST=${VIRTUAL_HOST} \
     -e VIRTUAL_PORT=8888 \
     -e LETSENCRYPT_HOST=${LETSENCRYPT_HOST} \
