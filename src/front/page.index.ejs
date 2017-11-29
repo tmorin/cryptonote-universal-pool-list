@@ -299,13 +299,10 @@ if (analytic && analytic.ga) {
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<%= analytic.ga %>"></script>
 <script>
-    var gaPage = '/pools/<%= htmlWebpackPlugin.options.config.currency.tech_name %>';
-    console.log('gaPage', gaPage);
     window.dataLayer = window.dataLayer || [];
     function gtag() {dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', '<%= analytic.ga %>');
-    gtag('send', 'page', gaPage);
 </script>
 <% } %>
 
