@@ -2,6 +2,8 @@
 
 currency=$1
 
+echo "deploying $currency"
+
 docker build --rm -t ${currency}-universal-pool-list .
 docker rm -f ${currency}-universal-pool-list
 docker run -d --network=containers --restart always --name ${currency}-universal-pool-list \
