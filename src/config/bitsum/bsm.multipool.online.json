@@ -1,0 +1,6 @@
+{
+  "name": "bsm.multipool.online/",
+  "front": "http://bsm.multipool.online/",
+  "back": "http://bsm.multipool.online:8118",
+  "location": "??"
+}
