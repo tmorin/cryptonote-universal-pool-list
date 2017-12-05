@@ -25,6 +25,10 @@ function floatToString(float) {
     return float.toFixed(6).replace(/[0\.]+$/, '');
 }
 
+function shorten(text = '', maxLength = 9) {
+    return text.length > maxLength ? text.substr(0, maxLength - 3) + '...' : text;
+}
+
 function fetchServers() {
     const $tbody = $('#serverTable').find('tbody').html(`
         <tr>
@@ -33,8 +37,7 @@ function fetchServers() {
                     made with
                     <i title="... love ..." class="fa fa-fw fa-heart fa-spin"></i>
                     somewhere in
-                    <span title="... Switzerland" class="made-with-flag"><i style="color: white;"
-                                                                            class="fa fa-plus fa-fw"></i></span>
+                    <span title="... Switzerland" class="made-with-flag">&nbsp;<i style="color: white;" class="fa fa-plus fa-fw"></i>&nbsp;</span>
                 </div>
             </td>
         </tr>
@@ -71,16 +74,18 @@ function fetchServers() {
                 `;
                     $tbody.append(tpl);
                 } else {
+                    const loc = server.location || 'unknown';
+                    const locCell = shorten(loc);
+                    const locTooltip = loc !== locCell ? loc : null;
                     const tpl = `
                 <tr>
                 <td class="text-center"><i class="fa fa-fw fa-check"></i></td>
                 <td data-toggle="tooltip" data-html="true" title="${secTl}" class="${secCls}"><a target="_blank" href="${server.front}">${server.name}</a></td>
-                <td>${ server.location || 'unknown' }</td>
+                <td data-toggle="${locTooltip && 'tooltip'}" title="${locTooltip}">${ shorten(server.location) || 'unknown' }</td>
                 <td class="text-right">${ floatToString(server.stats.config.fee) || 0 }%</td>
                 <td class="text-right">${ getReadableCoins(server.stats, server.stats.config.minPaymentThreshold, 3, true) }</td>
                 <td class="text-right">${ getReadableHashRateString(server.stats.pool.hashrate) }</td>
                 <td class="text-right">${ server.stats.pool.totalBlocks || '0' }</td>
-                <!--<td class="text-right">${ moment.unix(parseInt(server.stats.pool.lastBlockFound)).toNow() }</td>-->
                 <td class="text-right">${ moment(parseInt(server.stats.pool.lastBlockFound)).fromNow() }</td>
                 <td class="text-right">${ server.stats.pool.miners }</td>
                 <td class="text-right">${ server.stats.pool.totalMinersPaid }</td>
@@ -90,7 +95,7 @@ function fetchServers() {
                     $tbody.append(tpl);
                 }
             });
-            $('[data-toggle="tooltip"]').tooltip();
+            $('#serverTable').find('tbody').find('[data-toggle="tooltip"]').tooltip();
         })
         .catch(err => console.error(err));
 }
@@ -101,5 +106,4 @@ $('a[name="refreshServers"]').click(evt => {
     evt.preventDefault();
     fetchServers();
 });
-
 fetchServers();
