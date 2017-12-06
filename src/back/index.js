@@ -106,7 +106,7 @@ function fetchStats(server) {
 function fetchAllStats() {
     shouldUpdateCache = false;
     return loadServers()
-        .then(servers => Promise.all(servers.map(fetchStats)))
+        .then(servers => Promise.all(servers.filter(s => !s.disabled).map(fetchStats)))
         .then(servers => {
             cache = servers;
             updatedOn = (new Date()).toISOString();
