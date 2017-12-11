@@ -36,11 +36,8 @@ function checkAddress() {
     return fetch(`./api/address/${address}`)
         .then(resp => resp.json())
         .then(servers => {
-            $tbody.html(`
-                <tr><td colspan="6" class="text-center">Noting to display</td></tr>
-            `);
-            servers.forEach(server => {
-                const tpl = `
+            const serversAsHtml = servers.map(server => {
+                return `
                     <tr>
                         <td>${server.name}</td>
                         <td class="text-right">${server.address.stats.hashrate ? server.address.stats.hashrate + '/s' : '0 H/s'}</td>
@@ -49,8 +46,10 @@ function checkAddress() {
                         <td class="text-right">${getReadableCoins(server.stats, server.address.stats.balance, 5, true)}</td>
                         <td class="text-right">${getReadableCoins(server.stats, server.address.stats.paid, 5, true)}</td>
                     </tr>`;
-                $tbody.append(tpl);
-            });
+            }).join('');
+            $tbody.html(
+                serversAsHtml || `<tr><td colspan="6" class="text-center">Noting to display</td></tr>`
+            ).find('[data-toggle="tooltip"]').tooltip();
         })
         .catch(err => {
             console.error(err);
