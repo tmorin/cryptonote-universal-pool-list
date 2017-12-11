@@ -3,14 +3,6 @@ import $ from "jquery";
 import moment from 'moment/moment';
 import parseUrl from 'url-parse';
 
-function showRefreshBox() {
-
-}
-
-function hideRefreshBox() {
-
-}
-
 export function fetchServers() {
     const $table = $('#serverTable').addClass('loading');
     const $tbody = $table.find('tbody');

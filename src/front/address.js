@@ -18,7 +18,7 @@ export function restoreAddress() {
     } else {
         $('form[name=checkForm]')[0].reset();
         $('#addressTable').find('tbody').append(`
-            <tr><td colspan="5" class="text-center">Noting to display, please enter an address ...</td></tr>
+            <tr><td colspan="6" class="text-center">Noting to display, please enter an address ...</td></tr>
         `);
     }
 }
