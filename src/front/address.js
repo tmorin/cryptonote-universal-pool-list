@@ -36,7 +36,9 @@ function checkAddress() {
     return fetch(`./api/address/${address}`)
         .then(resp => resp.json())
         .then(servers => {
-            $tbody.html('');
+            $tbody.html(`
+                <tr><td colspan="6" class="text-center">Noting to display</td></tr>
+            `);
             servers.forEach(server => {
                 const tpl = `
                     <tr>
