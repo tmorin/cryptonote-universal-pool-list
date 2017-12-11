@@ -59,7 +59,7 @@ export function fetchServers() {
                         </tr>
                     `;
                 }
-            });
+            }).join('');
 
             $tbody.html(
                 serversAsHtml || `<tr><td colspan="11" class="text-center">Noting to display</td></tr>`
