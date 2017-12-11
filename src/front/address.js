@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import moment from 'moment/moment';
-import {floatToString, getReadableCoins, getReadableHashRateString, getReadableNumber, shorten} from './utils';
+import {getReadableCoins, getReadableNumber} from './utils';
 
 function backupAddress() {
     const address = $('form[name="checkForm"] [name=address]').val();
@@ -30,19 +30,8 @@ function checkAddress() {
     const $btnTxt = $btn.find('.text').text('Loading ...');
     const $btnFa = $btn.find('.fa').addClass('fa-spin');
 
-    const $table = $('#addressTable');
-    const $tbody = $table.find('tbody').html(`
-        <tr>
-            <td colspan="6">
-                <div class="made-with lead">
-                    made with
-                    <i title="... love ..." class="fa fa-fw fa-heart fa-spin"></i>
-                    somewhere in
-                    <span title="... Switzerland" class="made-with-flag">&nbsp;<i style="color: white;" class="fa fa-plus fa-fw"></i>&nbsp;</span>
-                </div>
-            </td>
-        </tr>
-    `);
+    const $table = $('#addressTable').addClass('loading');
+    const $tbody = $table.find('tbody');
 
     return fetch(`./api/address/${address}`)
         .then(resp => resp.json())
@@ -71,6 +60,7 @@ function checkAddress() {
             $btn.removeAttr('disabled');
             $btnTxt.text('Check');
             $btnFa.removeClass('fa-spin');
+            $table.removeClass('loading');
         });
 }
 

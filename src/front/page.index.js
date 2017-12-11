@@ -9,4 +9,11 @@ import {restoreAddress} from "./address";
 $('body').css({'display': 'block'});
 $('[data-toggle="tooltip"]').tooltip();
 
-fetchServers().then(restoreAddress);
+function refreshAll() {
+    return fetchServers()
+        .then(restoreAddress)
+        .catch(console.error)
+        .then(() => setTimeout(refreshAll, 1000 * 60 * 5));
+}
+
+refreshAll();

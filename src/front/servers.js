@@ -3,31 +3,24 @@ import $ from "jquery";
 import moment from 'moment/moment';
 import parseUrl from 'url-parse';
 
-let lastPayload = {};
+function showRefreshBox() {
 
-export function getLastPayload() {
-    return lastPayload;
+}
+
+function hideRefreshBox() {
+
 }
 
 export function fetchServers() {
-    const $tbody = $('#serverTable').find('tbody').html(`
-        <tr>
-            <td colspan="11">
-                <div class="made-with lead">
-                    made with
-                    <i title="... love ..." class="fa fa-fw fa-heart fa-spin"></i>
-                    somewhere in
-                    <span title="... Switzerland" class="made-with-flag">&nbsp;<i style="color: white;" class="fa fa-plus fa-fw"></i>&nbsp;</span>
-                </div>
-            </td>
-        </tr>
-    `);
+    const $table = $('#serverTable').addClass('loading');
+    const $tbody = $table.find('tbody');
     return fetch('./api/servers')
         .then(resp => resp.json())
         .then(payload => {
-            localStorage.setItem('lastPayload', JSON.stringify(payload));
             const {servers = [], updatedOn} = payload;
+
             $('#poolsUpdatedOn').text(`updated ${moment(updatedOn).fromNow()}`);
+
             servers.map(server => {
                 $('#serverTable').find('tbody').html('');
                 const front = parseUrl(server.front).protocol === 'https:';
@@ -77,9 +70,9 @@ export function fetchServers() {
                     $tbody.append(tpl);
                 }
             });
+
             $('#serverTable').find('tbody').find('[data-toggle="tooltip"]').tooltip();
-        })
-        .catch(err => console.error(err));
+        }).catch(err => console.error(err)).then(() => $table.removeClass('loading'));
 }
 
 $('a[name="refreshServers"]').click(evt => {

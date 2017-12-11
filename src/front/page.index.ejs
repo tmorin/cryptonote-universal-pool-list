@@ -70,7 +70,7 @@
     </div>
 </header>
 
-<section class="jumbotron jumbotron-fluid">
+<section id="servers" class="jumbotron jumbotron-fluid">
     <div class="container-fluid">
         <h2 class="text-center">
             Pools
@@ -89,9 +89,20 @@
                 </small>
             </a>
         </h2>
+        <br>
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
                 <table id="serverTable" class="table table-striped table-responsive">
+                    <tfoot class="loader">
+                        <tr class="made-with lead">
+                            <td>
+                            made with
+                            <i title="... love ..." class="fa fa-fw fa-heart fa-spin"></i>
+                            somewhere in
+                            <span title="... Switzerland" class="made-with-flag">&nbsp;<i style="color: white;" class="fa fa-plus fa-fw"></i>&nbsp;</span>
+                            </td>
+                        </tr>
+                    </tfoot>
                     <thead>
                     <tr>
                         <th></th>
@@ -188,7 +199,7 @@
     </div>
 </div>
 
-<section class="jumbotron jumbotron-fluid">
+<section id="ads" class="jumbotron jumbotron-fluid">
     <div class="container">
         <h2 class="text-center">Ads</h2>
         <div class="text-center">
@@ -222,7 +233,7 @@
     </div>
 </section>
 
-<section class="jumbotron jumbotron-fluid">
+<section id="address" class="jumbotron jumbotron-fluid">
     <div class="container">
         <h2 class="text-center">Address</h2>
         <br>
@@ -237,9 +248,20 @@
                 </span>
             </div>
         </form>
+        <br>
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
                 <table id="addressTable" class="table table-striped table-responsive">
+                    <tfoot class="loader">
+                    <tr class="made-with lead">
+                        <td>
+                            made with
+                            <i title="... love ..." class="fa fa-fw fa-heart fa-spin"></i>
+                            somewhere in
+                            <span title="... Switzerland" class="made-with-flag">&nbsp;<i style="color: white;" class="fa fa-plus fa-fw"></i>&nbsp;</span>
+                        </td>
+                    </tr>
+                    </tfoot>
                     <thead>
                     <tr>
                         <th>Pool</th>
@@ -258,7 +280,7 @@
 </section>
 
 <% if (htmlWebpackPlugin.options.config.exchanges) { %>
-<section class="jumbotron jumbotron-fluid">
+<section id="exchanges" class="jumbotron jumbotron-fluid">
     <div class="container">
         <h2 class="text-center">Exchanges</h2>
         <br>
@@ -280,7 +302,7 @@
 </section>
 <% } %>
 
-<section class="jumbotron jumbotron-fluid">
+<section id="donations" class="jumbotron jumbotron-fluid">
     <div class="container">
         <h2 class="text-center">Donations are welcome!</h2>
 
