@@ -16,4 +16,8 @@ function refreshAll() {
         .then(() => setTimeout(refreshAll, 1000 * 60 * 5));
 }
 
-refreshAll();
+$(() => {
+    refreshAll();
+});
+
+

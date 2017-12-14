@@ -4,7 +4,7 @@ import fs from 'fs';
 import request from 'request';
 import {conf, CURRENCY, HTTP_TIMEOUT} from './config';
 
-let shouldUpdateCache = false;
+let shouldUpdateCache = true;
 let cache = [];
 let updatedOn = (new Date()).toISOString();
 
