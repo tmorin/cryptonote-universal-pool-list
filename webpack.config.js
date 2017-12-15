@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 function htmlWebpackPluginFactory(currency) {
     return new HtmlWebpackPlugin({
-        template: 'src/front/page.index.ejs',
+        template: 'src/front/index.ejs',
         chunks: ['index'],
         filename: `${currency}.html`,
         config: require(`./src/config/${currency}.json`),
@@ -22,7 +22,7 @@ function htmlWebpackPluginFactory(currency) {
 module.exports = {
     devtool: ' source-map',
     entry: {
-        'index': './src/front/page.index.js'
+        'index': './src/front/index.js'
     },
     output: {
         path: path.join(__dirname, 'public'),
@@ -65,7 +65,10 @@ module.exports = {
         port: 9000,
         proxy: {
             '/api': {
-                target: 'http://127.0.0.1:8888'
+                target: 'http://localhost:8888'
+            },
+            '/auth': {
+                target: 'http://localhost:8888'
             }
         }
     }

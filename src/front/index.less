@@ -45,3 +45,19 @@
     border: 0;
   }
 }
+
+#requestResultDialog {
+  .modal-title, .modal-body {
+    display: none;
+  }
+  &.success {
+    .success {
+      display: block;
+    }
+  }
+  &.failure {
+    .failure {
+      display: block;
+    }
+  }
+}

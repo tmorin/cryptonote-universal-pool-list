@@ -1,10 +1,26 @@
 import express from 'express';
 import request from 'request';
-import {CURRENCY} from './config';
+import {CALLBACK_URL, CURRENCY, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, HOME_URL} from './config';
 import {fetchServers} from './servers';
 import {checkAddress} from './address';
+import passport from 'passport';
+import {Strategy as GitHubStrategy} from 'passport-github2';
 
 const app = express();
+
+passport.use(new GitHubStrategy({
+        clientID: GITHUB_CLIENT_ID,
+        clientSecret: GITHUB_CLIENT_SECRET,
+        callbackURL: CALLBACK_URL
+    },
+    (accessToken, refreshToken, user, done) => {
+        done(null, {accessToken});
+    }
+));
+
+passport.serializeUser((user, done) => done(null, user));
+
+app.use(passport.initialize());
 
 app.use(express.static('public', {
     index: `${CURRENCY}.html`
@@ -13,6 +29,13 @@ app.use(express.static('public', {
 request.defaults({
     strictSSL: false
 });
+
+app.get('/auth/github',
+    passport.authenticate('github', {scope: ['repo'], session: false, failureRedirect: `${HOME_URL}#login-error`}));
+
+app.get('/auth/github/callback',
+    passport.authenticate('github', {scope: ['repo'], session: false, failureRedirect: `${HOME_URL}#login-failure`}),
+    (req, res) => res.redirect(`${HOME_URL}#login-success=${JSON.stringify(req.user)}`));
 
 app.get('/api/servers', (req, res) => {
     fetchServers()

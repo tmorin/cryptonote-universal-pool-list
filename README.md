@@ -12,6 +12,7 @@
 - Server configuration based on file system, one file === one server
 - coinmarket.com integration
 - Exchange integrations
+- GitHub issue integration
 - Google Analytic support (optional)
 - Donation list (optional)
 - docker image
@@ -117,11 +118,14 @@ Before the footer of the front page, a donations block can be displayed accordin
 #### administrator
 
 The *administrator domain* is there to setup the administrator details like the email.
+`request_user` and `request_repo` are used to configure the form creating the GitHub issues. 
 
 ```json
 {
   "administrator": {
-    "email": "admin@example.com"
+    "email": "admin@example.com",
+    "request_user": "tmorin",
+    "request_repo": "cryptonote-universal-pool-list"
   }
 }
 ```
