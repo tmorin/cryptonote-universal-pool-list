@@ -29,5 +29,5 @@ docker run -d --network=containers --restart always --name ${CONTAINER_NAME} \
     -e LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL} \
     -e GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID} \
     -e GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET} \
-    -e BASE_URL=${BASE_URL}
+    -e BASE_URL=${BASE_URL} \
     ${CONTAINER_NAME}
