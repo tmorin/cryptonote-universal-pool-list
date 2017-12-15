@@ -88,7 +88,10 @@ function fetchAllStats() {
         .then(servers => {
             cache = servers;
             updatedOn = (new Date()).toISOString();
-            return servers;
+            return {
+                servers,
+                updatedOn
+            };
         });
 }
 

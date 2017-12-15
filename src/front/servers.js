@@ -10,6 +10,7 @@ export function fetchServers() {
     return fetch('./api/servers')
         .then(resp => resp.json())
         .then(payload => {
+
             const {servers = [], updatedOn} = payload;
 
             $('#poolsUpdatedOn').text(`updated ${moment(updatedOn).fromNow()}`);
