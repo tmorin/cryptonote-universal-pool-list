@@ -1,11 +1,14 @@
 #!/usr/bin/env sh
 
 CURRENCY=$1
+GITHUB_CLIENT_ID=$2
+GITHUB_CLIENT_SECRET=$3
 CONTAINER_NAME="$CURRENCY-universal-pool-list"
 VIRTUAL_HOST="$CURRENCY-pools.morin.io,$CURRENCY-pools.containers"
 VIRTUAL_PORT=8888
 LETSENCRYPT_HOST="$CURRENCY-pools.morin.io"
 LETSENCRYPT_EMAIL="$CURRENCY-pools@morin.io"
+BASE_URL="https://$LETSENCRYPT_HOST"
 
 echo "deploying $CONTAINER_NAME"
 echo "CURRENCY: $CURRENCY"
@@ -24,4 +27,7 @@ docker run -d --network=containers --restart always --name ${CONTAINER_NAME} \
     -e VIRTUAL_PORT=8888 \
     -e LETSENCRYPT_HOST=${LETSENCRYPT_HOST} \
     -e LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL} \
+    -e GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID} \
+    -e GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET} \
+    -e BASE_URL=${BASE_URL}
     ${CONTAINER_NAME}
