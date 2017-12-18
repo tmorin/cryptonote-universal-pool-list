@@ -18,7 +18,7 @@ export function restoreAddress() {
     } else {
         $('form[name=checkForm]')[0].reset();
         $('#addressTable').find('tbody').html(`
-            <tr><td colspan="6" class="text-center">Noting to display, please enter an address ...</td></tr>
+            <tr><td colspan="6">Noting to display, please enter an address ...</td></tr>
         `);
     }
 }
@@ -54,7 +54,7 @@ function checkAddress() {
         .catch(err => {
             console.error(err);
             $tbody.html(
-                `<tr><td colspan="6" class="table-danger text-center">Unable to fetch address's stats.</td></tr>`
+                `<tr><td colspan="6" class="table-danger">Unable to fetch address's stats.</td></tr>`
             );
         })
         .then(() => {

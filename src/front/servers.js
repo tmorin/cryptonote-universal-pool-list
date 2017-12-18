@@ -37,7 +37,8 @@ export function fetchServers() {
                     return `
                         <tr>
                         <td><i class="fa fa-fw fa-thumbs-o-down"></i></td>
-                        <td colspan="10" class="table-danger text-center"><strong>${ server.key || 'unknown' }</strong> unable to fetch data</td>
+                        <td class="table-danger">${ server.key || 'unknown' }</td>
+                        <td colspan="9" class="table-danger">Unable to fetch data!</td>
                         </tr>
                     `;
                 } else {
@@ -63,7 +64,7 @@ export function fetchServers() {
             }).join('');
 
             $tbody.html(
-                serversAsHtml || `<tr><td colspan="11" class="text-center">Noting to display</td></tr>`
+                serversAsHtml || `<tr><td colspan="11">Noting to display</td></tr>`
             ).find('[data-toggle="tooltip"]').tooltip();
         }).catch(err => console.error(err)).then(() => $table.removeClass('loading'));
 }
