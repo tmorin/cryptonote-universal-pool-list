@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%
+    var coinmarket = htmlWebpackPlugin.options.config.coinmarket;
+    var donations = htmlWebpackPlugin.options.config.donations;
+    var adminEmail = htmlWebpackPlugin.options.config.administrator && htmlWebpackPlugin.options.config.administrator.email;
+    var ads = htmlWebpackPlugin.options.config.ads;
+    var exchanges = htmlWebpackPlugin.options.config.exchanges;
+    var analytic = htmlWebpackPlugin.options.config.analytic;
+    %>
+
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -20,8 +29,6 @@
     <link rel="shortcut icon" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/favicon.ico">
     <meta name="msapplication-config" content="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-
-    <% var adminEmail = htmlWebpackPlugin.options.config.administrator && htmlWebpackPlugin.options.config.administrator.email; %>
 </head>
 <body style="display: none;">
 
@@ -50,19 +57,19 @@
                 </ul>
                 <% } %>
             </div>
-            <% if (htmlWebpackPlugin.options.config.coinmarket) { %>
+            <% if (coinmarket) { %>
             <div class="col-sm-12 col-md-6">
                 <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
                 <div class="coinmarketcap-currency-widget"
-                     data-currency="<%= htmlWebpackPlugin.options.config.coinmarket.currency %>"
-                     data-base="<%= htmlWebpackPlugin.options.config.coinmarket.base %>"
-                     data-secondary="<%= htmlWebpackPlugin.options.config.coinmarket.secondary %>"
-                     data-ticker="<%= htmlWebpackPlugin.options.config.coinmarket.ticker %>"
-                     data-rank="<%= htmlWebpackPlugin.options.config.coinmarket.rank %>"
-                     data-marketcap="<%= htmlWebpackPlugin.options.config.coinmarket.marketcap %>"
-                     data-volume="<%= htmlWebpackPlugin.options.config.coinmarket.volume %>"
-                     data-stats="<%= htmlWebpackPlugin.options.config.coinmarket.stats %>"
-                     data-statsticker="<%= htmlWebpackPlugin.options.config.coinmarket.statsticker %>"
+                     data-currency="<%= coinmarket.currency %>"
+                     data-base="<%= coinmarket.base %>"
+                     data-secondary="<%= coinmarket.secondary %>"
+                     data-ticker="<%= coinmarket.ticker %>"
+                     data-rank="<%= coinmarket.rank %>"
+                     data-marketcap="<%= coinmarket.marketcap %>"
+                     data-volume="<%= coinmarket.volume %>"
+                     data-stats="<%= coinmarket.stats %>"
+                     data-statsticker="<%= coinmarket.statsticker %>"
                 ></div>
             </div>
             <% } %>
@@ -72,9 +79,7 @@
 
 <section id="servers" class="jumbotron jumbotron-fluid">
     <div class="container-fluid">
-        <h2 class="text-center">
-            Pools
-        </h2>
+        <h2 class="text-center">Pools</h2>
         <br>
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
@@ -116,17 +121,15 @@
                         <small class="text-white" id="poolsUpdatedOn"></small>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-link" name="refreshServers" type="button">
+                        <a href="#" class="btn btn-sm btn-secondary" name="refreshServers" type="button">
                             <i class="fa fa-refresh"></i>
                             refresh
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="auth/github" class="btn btn-sm btn-link" type="button">
-                            <small>
-                                <i class="fa fa-gear"></i>
-                                update list
-                            </small>
+                        <a href="auth/github" class="btn btn-sm btn-secondary" type="button">
+                            <i class="fa fa-gear"></i>
+                            update list
                         </a>
                     </li>
                 </ul>
@@ -244,39 +247,17 @@
     </div>
 </div>
 
-<!--<section id="ads" class="jumbotron jumbotron-fluid">-->
-    <!--<div class="container">-->
-        <!--<h2 class="text-center">Ads</h2>-->
-        <!--<div class="text-center">-->
-            <!--<ul class="list-unstyled list-inline">-->
-                <!--<li class="list-inline-item">-->
-                    <!--<a href="https://hashflare.io/r/240F0672" target="_blank">-->
-                        <!--<img class="rounded" width="150" height="150" src="images/sponsor/hf_250x250_eng.gif"-->
-                             <!--alt="HashFlare">-->
-                    <!--</a>-->
-                <!--</li>-->
-                <!--<li class="list-inline-item">-->
-                    <!--<a href="https://www.genesis-mining.com/a/1934276" target="_blank">-->
-                        <!--<img class="rounded" width="150" height="150" src="images/sponsor/gm_150x150_en.gif"-->
-                             <!--alt="GenesisMining">-->
-                    <!--</a>-->
-                <!--</li>-->
-                <!--<li class="list-inline-item">-->
-                    <!--<a href="https://viabtc.com/?r=123647" target="_blank">-->
-                        <!--<img class="rounded" width="150" height="150" src="images/sponsor/vb_300x300_en.png"-->
-                             <!--alt="viabtc"/>-->
-                    <!--</a>-->
-                <!--</li>-->
-                <!--<li class="list-inline-item">-->
-                    <!--<a href="https://minergate.com/a/534dace5d63654ed3a25291f" target="_blank">-->
-                        <!--<img class="rounded" width="150" height="150" src="images/sponsor/mg_250x250_en.png"-->
-                             <!--alt="Minergate"/>-->
-                    <!--</a>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</section>-->
+<section id="ads" class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h2 class="text-center">Ads</h2>
+        <% if (ads && ads['a-ads.com']) { %>
+        <div class="text-center">
+            <iframe data-aa='<%= ads['a-ads.com'] %>' src='//acceptable.a-ads.com/<%= ads['a-ads.com'] %>?size=Adaptive' scrolling='no' style='border:0; padding:0;overflow:hidden' allowtransparency='false' class="rounded"></iframe>
+        </div>
+        <% } %>
+    </div>
+</section>
+
 
 <section id="address" class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -326,15 +307,14 @@
     </div>
 </section>
 
-<% if (htmlWebpackPlugin.options.config.exchanges) { %>
+<% if (exchanges) { %>
 <section id="exchanges" class="jumbotron jumbotron-fluid">
     <div class="container">
         <h2 class="text-center">Exchanges</h2>
         <br>
         <ul class="list-unstyled list-inline text-center">
             <%
-                var exchanges = htmlWebpackPlugin.options.config.exchanges;
-                var exchangeKeys = Object.keys(htmlWebpackPlugin.options.config.exchanges);
+                var exchangeKeys = Object.keys(exchanges);
                 exchangeKeys.forEach(function (key) {
                     var exchange = exchanges[key];
             %>
@@ -357,8 +337,7 @@
         <div class="lead">Donation for administration</div>
         <dl>
             <%
-                var donations = htmlWebpackPlugin.options.config.donations;
-                var donationKeys = Object.keys(htmlWebpackPlugin.options.config.donations);
+                var donationKeys = Object.keys(donations);
                 donationKeys.forEach(function (key) {
                     var address = donations[key];
             %>
@@ -390,10 +369,7 @@
             <a target="_blank" href="https://github.com/tmorin/cryptonote-universal-pool-list/blob/master/LICENSE">
                 GPL
             </a>
-            <%
-            var adminEmail = htmlWebpackPlugin.options.config.administrator && htmlWebpackPlugin.options.config.administrator.email;
-            if (adminEmail) {
-            %>
+            <% if (adminEmail) { %>
             -
             <a href="mailto:<%= adminEmail %>"><%= adminEmail %></a>
             <% } %>
@@ -402,7 +378,6 @@
 </footer>
 
 <%
-var analytic = htmlWebpackPlugin.options.config.analytic;
 if (analytic && analytic.ga) {
 %>
 <!-- Global site tag (gtag.js) - Google Analytics -->

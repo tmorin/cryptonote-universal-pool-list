@@ -48,6 +48,9 @@
   "analytic": {
     "ga": "UA-20179310-9"
   },
+  "ads": {
+    "a-ads.com": "ca-pub-6367309642430193"
+  },
   "worker": {
     "interval_ms": 300000
   }
