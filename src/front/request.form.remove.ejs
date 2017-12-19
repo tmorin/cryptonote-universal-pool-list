@@ -1,0 +1,21 @@
+<form name="removeServer" hidden>
+    <input type="hidden" name="action" value="remove">
+
+    <hr>
+
+    <p class="from-group">
+        <label for="serverNameRemove">The name of the pool (required)</label>
+        <select class="form-control" id="serverNameRemove" name="name" required></select>
+    </p>
+
+    <p class="from-group">
+        <label for="requestCommentsRemove">Comments</label>
+        <textarea class="form-control" id="requestCommentsRemove" name="comments"></textarea>
+    </p>
+
+    <button type="submit" class="btn btn-danger btn-block">
+        <i class="fa fa-remove"></i>
+        <span>Remove</span>
+    </button>
+
+</form>

@@ -1,0 +1,37 @@
+<form name="updateServer" hidden>
+    <input type="hidden" name="action" value="update">
+
+    <hr>
+
+    <p>Please fill only fields which should be updated.</p>
+
+    <p class="from-group">
+        <label for="serverNameUpdate">The name of the pool (required)</label>
+        <select class="form-control" id="serverNameUpdate" name="name" required></select>
+    </p>
+
+    <p class="from-group">
+        <label for="serverFrontUpdate">The URL of the front-end</label>
+        <input class="form-control" id="serverFrontUpdate" name="front" placeholder="For instance https://pool.mycrypocoin.com" type="url">
+    </p>
+
+    <p class="form-group">
+        <label for="serverBackUpdate">The URL of the back-end</label>
+        <input class="form-control" id="serverBackUpdate" name="back" placeholder="For instance https://pool.mycrypocoin.com/api" type="url">
+    </p>
+
+    <p class="from-group">
+        <label for="serverLocationsUpdate">The location of the pool</label>
+        <input class="form-control" id="serverLocationsUpdate" name="locations" placeholder="For instance FR/US">
+    </p>
+
+    <p class="from-group">
+        <label for="requestCommentsUpdate">Comments</label>
+        <textarea class="form-control" id="requestCommentsUpdate" name="comments"></textarea>
+    </p>
+
+    <button type="submit" class="btn btn-primary btn-block">
+        <i class="fa fa-edit"></i>
+        <span>Update</span>
+    </button>
+</form>

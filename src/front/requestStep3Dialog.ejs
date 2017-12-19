@@ -1,0 +1,32 @@
+<div class="modal fade" id="requestStep3Dialog" tabindex="-1" role="dialog" aria-labelledby="requestStep3DialogLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title success" id="requestResultDialogLabel">Issue submitted</h5>
+                <h5 class="modal-title failure" id="requestResultDialogLabel">Submission failed</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <section class="modal-body success">
+                <p>
+                    <i class="fa fa-thumbs-up"></i>
+                    Thank you!
+                    Your issue has been submitted.
+                </p>
+            </section>
+            <section class="modal-body failure">
+                <p>
+                    <i class="fa fa-thumbs-down"></i>
+                    Ouuuups!
+                    Your issue hasn't been submitted.
+                    Something goes wrong.
+                </p>
+                <p>
+                    Please try later of submit your issue directly on
+                    <a href="https://github.com/<%= htmlWebpackPlugin.options.config.administrator.request_user %>/<%= htmlWebpackPlugin.options.config.administrator.request_repo %>/issues/new">GitHub</a>
+                </p>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="modal fade" id="requestStep2Dialog" tabindex="-1" role="dialog" aria-labelledby="requestStep2DialogLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="requestDialogLabel">Submit the request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <section class="modal-body">
+                <p>Please fill the form below and submit the request.</p>
+
+                <p class="from-group form-selection">
+                    <span>The action to perform:</span><br>
+                    <span class="form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="action" value="add">
+                            Add
+                        </label>
+                    </span>
+                    <span class="form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="action" value="update">
+                            Update
+                        </label>
+                    </span>
+                    <span class="form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="action" value="remove">
+                            Remove
+                        </label>
+                    </span>
+                </p>
+
+                <%- include ./request.form.add.ejs %>
+
+                <%- include ./request.form.update.ejs %>
+
+                <%- include ./request.form.remove.ejs %>
+
+            </section>
+        </div>
+    </div>
+</div>

@@ -33,6 +33,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.2.0",
     "css-loader": "^0.28.7",
+    "ejs-compiled-loader": "^1.1.0",
     "file-loader": "^1.1.5",
     "font-awesome": "^4.7.0",
     "github-api": "^3.0.0",

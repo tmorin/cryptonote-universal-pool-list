@@ -1,0 +1,37 @@
+<form name="addServer" hidden>
+    <hr>
+
+    <p>Please fill the following fields according to the pool setup.</p>
+
+    <input type="hidden" name="action" value="add">
+
+    <p class="from-group">
+        <label for="serverName">The name of the pool (required)</label>
+        <input class="form-control" id="serverName" name="name" required placeholder="For instance pool.mycrypocoin.com">
+    </p>
+
+    <p class="from-group">
+        <label for="serverFront">The URL of the front-end (required)</label>
+        <input class="form-control" id="serverFront" name="front" required placeholder="For instance https://pool.mycrypocoin.com" type="url">
+    </p>
+
+    <p class="form-group">
+        <label for="serverBack">The URL of the back-end (required)</label>
+        <input class="form-control" id="serverBack" name="back" required placeholder="For instance https://pool.mycrypocoin.com/api" type="url">
+    </p>
+
+    <p class="from-group">
+        <label for="serverLocations">The location of the pool</label>
+        <input class="form-control" id="serverLocations" name="locations" required placeholder="For instance FR/US">
+    </p>
+
+    <p class="from-group">
+        <label for="requestComments">Comments</label>
+        <textarea class="form-control" id="requestComments" name="comments"></textarea>
+    </p>
+
+    <button type="submit" class="btn btn-primary btn-block">
+        <i class="fa fa-plus"></i>
+        <span>Add</span>
+    </button>
+</form>

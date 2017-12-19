@@ -6,6 +6,7 @@ import parseUrl from 'url-parse';
 export function fetchServers() {
     const $table = $('#serverTable').addClass('loading');
     const $tbody = $table.find('tbody');
+    const $serverNameSelects = $('#serverNameUpdate, #serverNameRemove').html('');
 
     return fetch('./api/servers')
         .then(resp => resp.json())
@@ -35,7 +36,7 @@ export function fetchServers() {
                 const secTl = `front: ${server.secured.front ? 'https' : 'http'}<br>back: ${server.secured.back ? 'https' : 'http'}`;
                 if (server.error) {
                     return `
-                        <tr>
+                        <tr data-name="${ server.key || 'unknown' }">
                         <td><i class="fa fa-fw fa-thumbs-o-down"></i></td>
                         <td class="table-danger">${ server.key || 'unknown' }</td>
                         <td colspan="9" class="table-danger">Unable to fetch data!</td>
@@ -46,7 +47,7 @@ export function fetchServers() {
                     const locCell = shorten(loc);
                     const locTooltip = loc !== locCell ? loc : null;
                     return `
-                        <tr>
+                        <tr data-name="${ server.key || 'unknown' }">
                         <td class="text-center"><i class="fa fa-fw fa-check"></i></td>
                         <td data-toggle="tooltip" data-html="true" title="${secTl}" class="${secCls}"><a target="_blank" href="${server.front}">${server.name}</a></td>
                         <td data-toggle="${locTooltip && 'tooltip'}" title="${locTooltip}">${ shorten(server.location) || 'unknown' }</td>
@@ -66,6 +67,10 @@ export function fetchServers() {
             $tbody.html(
                 serversAsHtml || `<tr><td colspan="11">Noting to display</td></tr>`
             ).find('[data-toggle="tooltip"]').tooltip();
+
+            $serverNameSelects.html(
+                $tbody.find('tr').toArray().map(e => `<option>${e.dataset.name}</option>`).join('\n')
+            );
         }).catch(err => console.error(err)).then(() => $table.removeClass('loading'));
 }
 
