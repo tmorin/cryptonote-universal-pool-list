@@ -1,6 +1,6 @@
 FROM node:8-alpine
 
-RUN apk add --update supervisor
+RUN apk add --update supervisor git
 
 COPY ./docker /
 COPY ./package* /opt/
