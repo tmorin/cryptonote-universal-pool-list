@@ -22,7 +22,8 @@
     <meta property="x:app:version" content="<%= htmlWebpackPlugin.options.pkg.version %>">
     <meta property="x:app:repoUser" content="<%= htmlWebpackPlugin.options.config.administrator.request_user %>">
     <meta property="x:app:repoName" content="<%= htmlWebpackPlugin.options.config.administrator.request_repo %>">
-    <meta property="x:app:accessToken" content="">
+    <meta property="x:github:accessToken" content="">
+    <meta property="x:github:username" content="">
 
     <link rel="apple-touch-icon" sizes="180x180" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/favicon-32x32.png">
@@ -131,10 +132,10 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="auth/github" class="btn btn-sm btn-secondary" type="button" data-toggle="modal" data-target="#requestStep1Dialog">
+                        <button class="btn btn-sm btn-secondary" type="button" data-toggle="modal" data-target="#requestStep1Dialog">
                             <i class="fa fa-gear"></i>
-                            update list
-                        </a>
+                            manage
+                        </button>
                     </li>
                 </ul>
             </div>

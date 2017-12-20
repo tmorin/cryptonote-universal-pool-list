@@ -7,7 +7,22 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <section class="modal-body">
+                <p>
+                    You are logged with the GitHub account <strong class="github-username"></strong>.
+                    <a data-toggle="collapse" href="#githubLogout" aria-expanded="false" aria-controls="githubLogout">
+                        Not you?
+                    </a>
+                </p>
+
+                <ol class="collapse" id="githubLogout">
+                    <li><a href="https://github.com/logout" target="_blank">logout <i class="fa fa-external-link"></i></a> from GitHub</li>
+                    <li>then come back there to <a href="auth/github"><i class="fa fa-github"></i> sing-in</a> again.</li>
+                </ol>
+
+                <hr>
+
                 <p>Please fill the form below and submit the request.</p>
 
                 <p class="from-group form-selection">
@@ -39,6 +54,7 @@
                 <%- include ./request.form.remove.ejs %>
 
             </section>
+
         </div>
     </div>
 </div>

@@ -13,8 +13,8 @@ passport.use(new GitHubStrategy({
         clientSecret: GITHUB_CLIENT_SECRET,
         callbackURL: CALLBACK_URL
     },
-    (accessToken, refreshToken, user, done) => {
-        done(null, {accessToken});
+    (accessToken, refreshToken, {username}, done) => {
+        done(null, {accessToken, username});
     }
 ));
 
@@ -31,10 +31,18 @@ request.defaults({
 });
 
 app.get('/auth/github',
-    passport.authenticate('github', {scope: ['repo'], session: false, failureRedirect: `${HOME_URL}#login-error`}));
+    passport.authenticate('github', {
+        scope: ['public_repo'],
+        session: false,
+        failureRedirect: `${HOME_URL}#login-error`
+    }));
 
 app.get('/auth/github/callback',
-    passport.authenticate('github', {scope: ['repo'], session: false, failureRedirect: `${HOME_URL}#login-failure`}),
+    passport.authenticate('github', {
+        scope: ['public_repo'],
+        session: false,
+        failureRedirect: `${HOME_URL}#login-failure`
+    }),
     (req, res) => res.redirect(`${HOME_URL}#login-success=${JSON.stringify(req.user)}`));
 
 app.get('/api/servers', (req, res) => {
