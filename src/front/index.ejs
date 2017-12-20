@@ -101,17 +101,14 @@
                     </tfoot>
                     <thead>
                     <tr>
-                        <th></th>
-                        <th>
-                            Name
-                            <i title="Cells are colored according to the SSL/TLS security of pools's front and back." data-toggle="tooltip" class="fa fa-fw fa-question-circle-o"></i>
-                        </th>
-                        <th>Location</th>
+                        <th data-sorter="false"></th>
+                        <th title="Cells are colored according to the SSL/TLS security of pools's front and back." data-toggle="tooltip">Name</th>
+                        <th data-sorter="false">Location</th>
                         <th class="text-right">Fee</th>
                         <th class="text-right">Min. Payment</th>
                         <th class="text-right">Hashrate</th>
                         <th class="text-right">Blocks Found</th>
-                        <th class="text-right" data-toggle="tooltip" title="Last Blocks Found">Last Blocks</th>
+                        <th data-sorter="false" class="text-right" data-toggle="tooltip" title="Last Blocks Found">Last Blocks</th>
                         <th class="text-right" data-toggle="tooltip" title="Connected Miners">Miners</th>
                         <th class="text-right" data-toggle="tooltip" title="Total Miners Paid">Miners Paid</th>
                         <th class="text-right" data-toggle="tooltip" title="Total Payments">Payments</th>
@@ -120,19 +117,20 @@
                     <tbody>
                     <tr><td colspan="11" class="text-center">Noting to display ...</td></tr>
                     </tbody>
+                    <tfoot></tfoot>
                 </table>
                 <ul class="list-unstyled list-inline text-center">
                     <li class="list-inline-item">
                         <small class="text-white" id="poolsUpdatedOn"></small>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-secondary" name="refreshServers" type="button">
+                        <a href="#" class="btn btn-sm btn-dark" name="refreshServers" type="button">
                             <i class="fa fa-refresh"></i>
                             refresh
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <button class="btn btn-sm btn-secondary" type="button" data-toggle="modal" data-target="#requestStep1Dialog">
+                        <button class="btn btn-sm btn-dark" type="button" data-toggle="modal" data-target="#requestStep1Dialog">
                             <i class="fa fa-gear"></i>
                             manage
                         </button>
