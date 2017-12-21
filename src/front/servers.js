@@ -11,6 +11,16 @@ export function fetchServers() {
     const $tfoot = $table.find('tfoot').html('');
     const $serverNameSelects = $('#serverNameUpdate, #serverNameRemove').html('');
 
+    $table.tablesorter({
+        theme: 'bootstrap',
+        emptyTo: 'bottom',
+        sortList: [[5, 1]],
+        textExtraction: {
+            3: node => node.dataset.value,
+            5: node => node.dataset.value
+        }
+    });
+
     return fetch('./api/servers')
         .then(resp => resp.json())
         .then(payload => {
@@ -67,15 +77,7 @@ export function fetchServers() {
                     </tr>
                 `));
 
-                $table.tablesorter({
-                    theme: 'bootstrap',
-                    emptyTo: 'bottom',
-                    sortList: [[5, 1]],
-                    textExtraction: {
-                        3: node => node.dataset.value,
-                        5: node => node.dataset.value
-                    }
-                });
+                $table.trigger('updateAll');
 
                 $serverNameSelects.html(
                     servers.map(server => `<option>${server.key}</option>`).join('\n')
