@@ -1,11 +1,12 @@
 import {floatToString, getReadableCoins, getReadableHashRateString, shorten} from './utils';
-import $ from "jquery";
+import $ from 'jquery';
 import moment from 'moment/moment';
 import parseUrl from 'url-parse';
 import 'tablesorter';
 
 export function fetchServers() {
-    const $table = $('#serverTable').addClass('loading');
+    const $tableContainer = $('#serverTableContainer').addClass('loading');
+    const $table = $('#serverTable');
     const $tbody = $table.find('tbody');
     const $tfoot = $table.find('tfoot').html('');
     const $serverNameSelects = $('#serverNameUpdate, #serverNameRemove').html('');
@@ -80,7 +81,7 @@ export function fetchServers() {
                     servers.map(server => `<option>${server.key}</option>`).join('\n')
                 );
             }
-        ).catch(console.error).then(() => $table.removeClass('loading'));
+        ).catch(console.error).then(() => $tableContainer.removeClass('loading'));
 }
 
 $('a[name="refreshServers"]').click(evt => {

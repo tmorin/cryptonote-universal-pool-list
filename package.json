@@ -10,6 +10,7 @@
     "build": "rimraf lib && babel src/back -d lib && webpack -p",
     "w:front": "webpack-dev-server --open --hot --inline",
     "w:back:itns": "CURRENCY=intensecoin nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
+    "w:back:xlc": "CURRENCY=leviarcoin nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
     "w:back:bsm": "CURRENCY=bitsum nodemon --watch src --ignore src/front --exec babel-node src/back/index.js"
   },
   "repository": {

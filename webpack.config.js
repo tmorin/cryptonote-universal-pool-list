@@ -4,13 +4,18 @@ const pkg = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const glob = require('glob');
 
-function htmlWebpackPluginFactory(currency) {
+const currencies = glob.sync('src/config/*.json', {cwd: __dirname})
+    .map(file => file.replace(/src\/config\//, '').replace(/.json$/, ''));
+
+function htmlWebpackPluginFactory(currencies, currency) {
     return new HtmlWebpackPlugin({
         template: 'src/front/index.ejs',
         chunks: ['index'],
         filename: `${currency}.html`,
         config: require(`./src/config/${currency}.json`),
+        currencies,
         minify: {
             collapseInlineTagWhitespace: false,
             collapseWhitespace: true
@@ -21,13 +26,16 @@ function htmlWebpackPluginFactory(currency) {
 
 module.exports = {
     devtool: ' source-map',
+
     entry: {
         'index': './src/front/index.js'
     },
+
     output: {
         path: path.join(__dirname, 'public'),
         filename: '[name].[hash].js'
     },
+
     plugins: [
         new CleanWebpackPlugin(['public', 'config']),
         new webpack.ProvidePlugin({
@@ -36,15 +44,16 @@ module.exports = {
             'window.jQuery': 'jquery',
             Popper: ['popper.js', 'default']
         }),
-        htmlWebpackPluginFactory('intensecoin'),
-        htmlWebpackPluginFactory('bitsum'),
         new CopyWebpackPlugin([
             {from: './src/front', to: '../public', toType: 'dir'},
             {from: './src/config', to: '../config', toType: 'dir'}
         ], {
             ignore: ['*.js', '*.ejs', '*.less']
         })
-    ],
+    ].concat(
+        currencies.map(c => htmlWebpackPluginFactory(currencies, c))
+    ),
+
     module: {
         rules: [
             {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
@@ -59,6 +68,7 @@ module.exports = {
             {test: /\.css$/, loader: 'style-loader!css-loader'}
         ]
     },
+
     devServer: {
         https: true,
         contentBase: 'src/front',

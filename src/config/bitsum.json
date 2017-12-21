@@ -25,7 +25,10 @@
     "request_repo": "cryptonote-universal-pool-list"
   },
   "analytic": {
-    "ga": "UA-20179310-10"
+    "ga": "UA-20179310-9"
+  },
+  "ads": {
+    "a-ads.com": "786113"
   },
   "worker": {
     "interval_ms": 300000

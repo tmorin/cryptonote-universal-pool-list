@@ -1,0 +1,56 @@
+{
+  "currency": {
+    "name": "Leviarcoin",
+    "short_name": "Leviarcoin",
+    "tech_name": "leviarcoin",
+    "symbol": "XLC"
+  },
+  "links": {
+    "leviarcoin.org": {
+      "icon": "fa fa-home",
+      "url": "https://leviarcoin.org"
+    },
+    "coinmarketcap.com": {
+      "icon": "fa fa-money",
+      "url": "https://coinmarketcap.com/currencies/leviarcoin"
+    },
+    "github.com": {
+      "icon": "fa fa-github",
+      "url": "https://github.com/leviarcoin"
+    }
+  },
+  "exchanges": {
+    "bittrex": {
+      "logo": "images/cryptopia.co.nz.png",
+      "url": "https://www.cryptopia.co.nz/Exchange/?market=XLC_BTC"
+    }
+  },
+  "coinmarket": {
+    "currency": "leviarcoin",
+    "base": "USD",
+    "secondary": "BTC",
+    "ticker": "true",
+    "rank": "true",
+    "marketcap": "true",
+    "volume": "true",
+    "stats": "USD",
+    "statsticker": "false"
+  },
+  "donations": {
+    "BTC": "13jXtnauRQf4eqXUQmH2MnAHLSp5Wefmjd"
+  },
+  "administrator": {
+    "email": "leviarcoin-pools@morin.io",
+    "request_user": "tmorin",
+    "request_repo": "cryptonote-universal-pool-list"
+  },
+  "analytic": {
+    "ga": "UA-20179310-9"
+  },
+  "ads": {
+    "a-ads.com": "786090"
+  },
+  "worker": {
+    "interval_ms": 300000
+  }
+}

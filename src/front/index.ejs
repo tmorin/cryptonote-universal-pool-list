@@ -2,37 +2,38 @@
 <html>
 <head>
     <%
-    var coinmarket = htmlWebpackPlugin.options.config.coinmarket;
-    var donations = htmlWebpackPlugin.options.config.donations;
-    var adminEmail = htmlWebpackPlugin.options.config.administrator && htmlWebpackPlugin.options.config.administrator.email;
-    var ads = htmlWebpackPlugin.options.config.ads;
-    var exchanges = htmlWebpackPlugin.options.config.exchanges;
-    var analytic = htmlWebpackPlugin.options.config.analytic;
+    var config = htmlWebpackPlugin.options.config;
+    var currencies = htmlWebpackPlugin.options.currencies;
+    var coinmarket = config.coinmarket;
+    var donations = config.donations;
+    var adminEmail = config.administrator && config.administrator.email;
+    var ads = config.ads;
+    var exchanges = config.exchanges;
+    var analytic = config.analytic;
     %>
 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title><%= htmlWebpackPlugin.options.config.currency.name %> Mining Pool List</title>
+    <title><%= config.currency.name %> Mining Pool List</title>
 
-    <meta property="og:title" content="<%= htmlWebpackPlugin.options.config.currency.name %> Mining Pool List">
-    <meta property="og:description" content="The most comprehensive mining pool list for <%= htmlWebpackPlugin.options.config.currency.name %>.">
+    <meta property="og:title" content="<%= config.currency.name %> Mining Pool List">
+    <meta property="og:description"
+          content="The most comprehensive mining pool list for <%= config.currency.name %>.">
     <meta property="og:locale" content="en">
 
     <meta property="x:app:version" content="<%= htmlWebpackPlugin.options.pkg.version %>">
-    <meta property="x:app:repoUser" content="<%= htmlWebpackPlugin.options.config.administrator.request_user %>">
-    <meta property="x:app:repoName" content="<%= htmlWebpackPlugin.options.config.administrator.request_repo %>">
+    <meta property="x:app:repoUser" content="<%= config.administrator.request_user %>">
+    <meta property="x:app:repoName" content="<%= config.administrator.request_repo %>">
     <meta property="x:github:accessToken" content="">
     <meta property="x:github:username" content="">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/favicon-16x16.png">
-    <link rel="manifest" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/manifest.json">
-    <link rel="mask-icon" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/favicon.ico">
-    <meta name="msapplication-config" content="images/icons-<%= htmlWebpackPlugin.options.config.currency.tech_name %>/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="images/icons-<%= config.currency.tech_name %>/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="images/icons-<%= config.currency.tech_name %>/favicon-16x16.png">
+    <link rel="shortcut icon"
+          href="images/icons-<%= config.currency.tech_name %>/favicon.ico">
 </head>
 <body style="display: none;">
 
@@ -40,14 +41,14 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h1>The <%= htmlWebpackPlugin.options.config.currency.short_name %> Mining Pool List</h1>
+                <h1>The <%= config.currency.short_name %> Mining Pool List</h1>
                 <p class="lead">Welcome to the most comprehensive mining pool list
-                    for <%= htmlWebpackPlugin.options.config.currency.name %>.</p>
-                <% if (htmlWebpackPlugin.options.config.links) { %>
+                    for <%= config.currency.name %>.</p>
+                <% if (config.links) { %>
                 <ul class="nav">
                     <%
-                        var links = htmlWebpackPlugin.options.config.links;
-                        var linkKeys = Object.keys(htmlWebpackPlugin.options.config.links);
+                        var links = config.links;
+                        var linkKeys = Object.keys(config.links);
                     linkKeys.forEach(function (key) {
                         var link = links[key];
                     %>
@@ -88,37 +89,46 @@
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
                 <datalist id="serverList"></datalist>
-                <table id="serverTable" class="table table-striped table-responsive">
-                    <tfoot class="loader">
-                        <tr class="made-with lead">
-                            <td>
+
+                <div id="serverTableContainer">
+                    <table id="serverTable" class="table table-striped table-responsive">
+                        <thead>
+                        <tr>
+                            <th data-sorter="false"></th>
+                            <th title="Cells are colored according to the SSL/TLS security of pools's front and back."
+                                data-toggle="tooltip">Name
+                            </th>
+                            <th data-sorter="false">Location</th>
+                            <th class="text-right">Fee</th>
+                            <th class="text-right">Min. Payment</th>
+                            <th class="text-right">Hashrate</th>
+                            <th class="text-right">Blocks Found</th>
+                            <th data-sorter="false" class="text-right" data-toggle="tooltip" title="Last Blocks Found">
+                                Last Blocks
+                            </th>
+                            <th class="text-right" data-toggle="tooltip" title="Connected Miners">Miners</th>
+                            <th class="text-right" data-toggle="tooltip" title="Total Miners Paid">Miners Paid</th>
+                            <th class="text-right" data-toggle="tooltip" title="Total Payments">Payments</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td colspan="11" class="text-center">Noting to display ...</td>
+                        </tr>
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+                    <div class="loader">
+                        <div class="made-with lead">
                             made with
                             <i title="... love ..." class="fa fa-fw fa-heart fa-spin"></i>
                             somewhere in
-                            <span title="... Switzerland" class="made-with-flag">&nbsp;<i style="color: white;" class="fa fa-plus fa-fw"></i>&nbsp;</span>
-                            </td>
-                        </tr>
-                    </tfoot>
-                    <thead>
-                    <tr>
-                        <th data-sorter="false"></th>
-                        <th title="Cells are colored according to the SSL/TLS security of pools's front and back." data-toggle="tooltip">Name</th>
-                        <th data-sorter="false">Location</th>
-                        <th class="text-right">Fee</th>
-                        <th class="text-right">Min. Payment</th>
-                        <th class="text-right">Hashrate</th>
-                        <th class="text-right">Blocks Found</th>
-                        <th data-sorter="false" class="text-right" data-toggle="tooltip" title="Last Blocks Found">Last Blocks</th>
-                        <th class="text-right" data-toggle="tooltip" title="Connected Miners">Miners</th>
-                        <th class="text-right" data-toggle="tooltip" title="Total Miners Paid">Miners Paid</th>
-                        <th class="text-right" data-toggle="tooltip" title="Total Payments">Payments</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr><td colspan="11" class="text-center">Noting to display ...</td></tr>
-                    </tbody>
-                    <tfoot></tfoot>
-                </table>
+                            <span title="... Switzerland" class="made-with-flag">&nbsp;<i style="color: white;"
+                                                                                          class="fa fa-plus fa-fw"></i>&nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+
                 <ul class="list-unstyled list-inline text-center">
                     <li class="list-inline-item">
                         <small class="text-white" id="poolsUpdatedOn"></small>
@@ -130,7 +140,8 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <button class="btn btn-sm btn-dark" type="button" data-toggle="modal" data-target="#requestStep1Dialog">
+                        <button class="btn btn-sm btn-dark" type="button" data-toggle="modal"
+                                data-target="#requestStep1Dialog">
                             <i class="fa fa-gear"></i>
                             manage
                         </button>
@@ -146,7 +157,9 @@
         <h2 class="text-center">Ads</h2>
         <% if (ads && ads['a-ads.com']) { %>
         <div class="text-center">
-            <iframe data-aa='<%= ads['a-ads.com'] %>' src='//acceptable.a-ads.com/<%= ads['a-ads.com'] %>?size=Adaptive' scrolling='no' style='border:0; padding:0;overflow:hidden' allowtransparency='false' class="rounded"></iframe>
+            <iframe data-aa='<%= ads['a-ads.com'] %>' src='//acceptable.a-ads.com/<%= ads['a-ads.com'] %>?size=Adaptive'
+                    scrolling='no' style='border:0; padding:0;overflow:hidden' allowtransparency='false'
+                    class="rounded"></iframe>
         </div>
         <% } %>
     </div>
@@ -158,7 +171,8 @@
         <br>
         <form name="checkForm">
             <div class="input-group">
-                <input class="form-control" type="text" required name="address" placeholder="Enter your <%= htmlWebpackPlugin.options.config.currency.name %> address" />
+                <input class="form-control" type="text" required name="address"
+                       placeholder="Enter your <%= config.currency.name %> address"/>
                 <span class="input-group-btn">
                     <button class="btn btn-primary" type="submit">
                         <i class="fa fa-cog"></i>
@@ -177,7 +191,8 @@
                             made with
                             <i title="... love ..." class="fa fa-fw fa-heart fa-spin"></i>
                             somewhere in
-                            <span title="... Switzerland" class="made-with-flag">&nbsp;<i style="color: white;" class="fa fa-plus fa-fw"></i>&nbsp;</span>
+                            <span title="... Switzerland" class="made-with-flag">&nbsp;<i style="color: white;"
+                                                                                          class="fa fa-plus fa-fw"></i>&nbsp;</span>
                         </td>
                     </tr>
                     </tfoot>
@@ -192,7 +207,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr><td colspan="6" class="text-center">Noting to display, please enter an address ...</td></tr>
+                    <tr>
+                        <td colspan="6" class="text-center">Noting to display, please enter an address ...</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -208,14 +225,14 @@
         <ul class="list-unstyled list-inline text-center">
             <%
                 var exchangeKeys = Object.keys(exchanges);
-                exchangeKeys.forEach(function (key) {
-                    var exchange = exchanges[key];
+            exchangeKeys.forEach(function (key) {
+                var exchange = exchanges[key];
             %>
-                <li class="list-inline-item">
-                    <a target="_blank" class="nav-link" href="<%= exchange.url %>">
-                        <img src="<%= exchange.logo %>" alt="<%= key %>"/>
-                    </a>
-                </li>
+            <li class="list-inline-item">
+                <a target="_blank" class="nav-link" href="<%= exchange.url %>">
+                    <img src="<%= exchange.logo %>" alt="<%= key %>"/>
+                </a>
+            </li>
             <% }) %>
         </ul>
     </div>
@@ -226,17 +243,17 @@
     <div class="container">
         <h2 class="text-center">Donations are welcome!</h2>
 
-        <% if (htmlWebpackPlugin.options.config.links) { %>
+        <% if (config.links) { %>
         <div class="lead">Donation for administration</div>
         <dl>
             <%
                 var donationKeys = Object.keys(donations);
-                donationKeys.forEach(function (key) {
-                    var address = donations[key];
+            donationKeys.forEach(function (key) {
+                var address = donations[key];
             %>
-                <dt><%= key %></dt>
-                <dd style="word-wrap: break-word;"><%= address %></dd>
-            <%  }) %>
+            <dt><%= key %></dt>
+            <dd style="word-wrap: break-word;"><%= address %></dd>
+            <% }) %>
         </dl>
         <% } %>
 
@@ -267,6 +284,13 @@
             <a href="mailto:<%= adminEmail %>"><%= adminEmail %></a>
             <% } %>
         </small>
+
+        <div>
+            <% currencies.filter(function (c) {return c !== config.currency.tech_name;}).forEach(function (c) { %>
+            <a target="_blank" class="small" href="https://<%= c %>-pools.morin.io"><%= c %>-pools.morin.io</a>
+            <% }); %>
+        </div>
+
     </div>
 </footer>
 
@@ -281,9 +305,12 @@ if (analytic && analytic.ga) {
 <script async src="https://www.googletagmanager.com/gtag/js?id=<%= analytic.ga %>"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', '<%= analytic.ga %>');
+    gtag('config', '<%= analytic.ga %>', {
+        'page_title': '<%= config.currency.tech_name %>',
+        'page_path': '/<%= config.currency.tech_name %>.html'
+    });
 </script>
 <% } %>
 
