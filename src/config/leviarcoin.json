@@ -36,9 +36,6 @@
     "stats": "USD",
     "statsticker": "false"
   },
-  "donations": {
-    "BTC": "13jXtnauRQf4eqXUQmH2MnAHLSp5Wefmjd"
-  },
   "administrator": {
     "email": "leviarcoin-pools@morin.io",
     "request_user": "tmorin",
