@@ -1,6 +1,6 @@
 {
   "name": "cryptonoteminingpool.com",
   "front": "http://cryptonoteminingpool.com",
-  "back": "http://cryptonoteminingpool.com/api",
+  "back": "http://cryptonoteminingpool.com:8117",
   "location": "US"
 }
