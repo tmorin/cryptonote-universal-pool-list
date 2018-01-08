@@ -1,0 +1,7 @@
+{
+  "name": "itnspool.net",
+  "front": "https://itnspool.net",
+  "back": "https://itnspool.net/api/pool",
+  "location": "US",
+  "disabled": true
+}
