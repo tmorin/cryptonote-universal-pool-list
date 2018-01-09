@@ -1,4 +1,4 @@
-export const HTTP_TIMEOUT = 1000 * 3;
+export const HTTP_TIMEOUT = 1000 * 5;
 
 export const PRODUCTION = process.env.NODE_ENV === 'production';
 console.log('PRODUCTION', PRODUCTION);

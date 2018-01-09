@@ -1,8 +1,9 @@
 import glob from 'glob';
 import path from 'path';
 import fs from 'fs';
-import request from 'request';
-import {conf, CURRENCY, HTTP_TIMEOUT} from './config';
+import {conf, CURRENCY} from './config';
+import {fetchNodejsPoolImpl} from './impl/nodejsPool';
+import {fetchDefaultImpl} from './impl/default';
 
 let shouldUpdateCache = true;
 let cache = [];
@@ -46,39 +47,12 @@ function loadServer(f) {
 }
 
 function fetchStats(server) {
-    return new Promise((resolve) => {
-        const url = `${server.back}/stats`;
-        request.get(url, {timeout: HTTP_TIMEOUT}, (err, res) => {
-            try {
-                if (err) {
-
-                    console.error(err);
-                    resolve(Object.assign({
-                        error: err.message
-                    }, server));
-
-                } else if (res.statusCode >= 200 && res.statusCode < 300) {
-
-                    resolve(Object.assign({
-                        stats: JSON.parse(res.body)
-                    }, server));
-
-                } else {
-
-                    resolve(Object.assign({
-                        error: `${url} returned an error`
-                    }, server));
-
-                }
-            } catch (e) {
-                console.warn(`${url} returned an error`);
-                console.warn(e);
-                resolve(Object.assign({
-                    error: `${url} cannot be parsed`
-                }, server));
-            }
-        });
-    });
+    switch (server.impl) {
+        case 'nodejs-pool':
+            return fetchNodejsPoolImpl(server);
+        default:
+            return fetchDefaultImpl(server);
+    }
 }
 
 function fetchAllStats() {
