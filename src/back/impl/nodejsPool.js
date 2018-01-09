@@ -1,13 +1,14 @@
 import {httpGet} from '../utils';
 import {conf, HTTP_TIMEOUT} from '../config';
 
+const HTTP_OPTIONS = {timeout: HTTP_TIMEOUT};
+
 export function fetchNodejsPoolImpl(server) {
     const configUrl = `${server.back}/config`;
     const statsUrl = `${server.back}/pool/stats`;
-    const options = {timeout: HTTP_TIMEOUT};
     return Promise.all([
-        httpGet(configUrl, options),
-        httpGet(statsUrl, options)
+        httpGet(configUrl, HTTP_OPTIONS),
+        httpGet(statsUrl, HTTP_OPTIONS)
     ]).then(responses => {
         const fetchSucceed = responses
             .filter(res => res.statusCode >= 200 && res.statusCode < 300)
@@ -26,6 +27,7 @@ export function fetchNodejsPoolImpl(server) {
                 fee: config.pplns_fee,
                 minPaymentThreshold: config.min_wallet_payout,
                 coin: conf('currency').tech_name,
+                coinUnits: config.min_denom * 1000,
                 symbol: conf('currency').symbol
             },
             pool: {
@@ -40,6 +42,47 @@ export function fetchNodejsPoolImpl(server) {
 
         return Object.assign({
             stats: result
+        }, server);
+    }).catch(error => {
+        console.error(error);
+        return Object.assign({
+            error: error.message
+        }, server);
+    });
+}
+
+export function checkAddressFromNodejsPool(server, address) {
+    const url = `${server.back}/miner/${address}/stats`;
+
+    return httpGet(url, HTTP_OPTIONS).then(response => {
+        if (response.statusCode >= 200 && response.statusCode < 300) {
+            const body = JSON.parse(response.body);
+
+            if (body.lastHash) {
+                return Object.assign({
+                    address: {
+                        stats: {
+                            hashrate: body.hash,
+                            hashes: body.totalHashes,
+                            lastShare: `${body.lastHash}`,
+                            balance: body.amtDue,
+                            paid: body.amtPaid
+                        }
+                    }
+                }, server);
+            }
+
+            return Object.assign({error: true}, server);
+        }
+
+        return Object.assign({
+            error: `${url} returned an error`
+        }, server);
+
+    }).catch(error => {
+        console.error(error);
+        return Object.assign({
+            error: error.message
         }, server);
     });
 }
