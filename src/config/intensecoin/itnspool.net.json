@@ -1,7 +1,7 @@
 {
   "name": "itnspool.net",
   "front": "https://itnspool.net",
-  "back": "https://itnspool.net/api/pool",
+  "back": "https://itnspool.net/api",
   "location": "US",
-  "disabled": true
+  "impl": "nodejs-pool"
 }
