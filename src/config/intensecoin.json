@@ -51,6 +51,6 @@
     "a-ads.com": "782705"
   },
   "worker": {
-    "interval_ms": 300000
+    "interval_ms": 120000
   }
 }
