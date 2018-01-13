@@ -1,6 +1,6 @@
 {
   "name": "itns.fastpool.io",
   "front": "http://itns.fastpool.io/",
-  "back": "http://itns.fastpool.io/api",
+  "back": "http://itns.fastpool.io:8119",
   "location": "EU"
 }
