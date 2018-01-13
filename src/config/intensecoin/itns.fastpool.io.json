@@ -1,0 +1,6 @@
+{
+  "name": "itns.fastpool.io",
+  "front": "http://itns.fastpool.io/",
+  "back": "http://itns.fastpool.io/api",
+  "location": "EU"
+}
