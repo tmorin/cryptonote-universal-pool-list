@@ -1,4 +1,5 @@
 {
+  "disabled": true,
   "name": "intensecoinpool.sytes.net",
   "front": "http://intensecoinpool.sytes.net",
   "back": "http://intensecoinpool.sytes.net:8117",
