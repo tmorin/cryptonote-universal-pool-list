@@ -18,7 +18,7 @@
   "exchanges": {
     "stocks.exchange": {
       "logo": "images/logo.stocks.exchange.png",
-      "url": "https://stocks.exchange/trade/ITNS/FNO"
+      "url": "https://stocks.exchange/trade/FNO/BTC"
     }
   },
   "administrator": {
