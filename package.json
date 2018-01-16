@@ -11,7 +11,8 @@
     "w:front": "webpack-dev-server --open --hot --inline",
     "w:back:itns": "CURRENCY=intensecoin nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
     "w:back:xlc": "CURRENCY=leviarcoin nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
-    "w:back:bsm": "CURRENCY=bitsum nodemon --watch src --ignore src/front --exec babel-node src/back/index.js"
+    "w:back:bsm": "CURRENCY=bitsum nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
+    "w:back:fno": "CURRENCY=fonero nodemon --watch src --ignore src/front --exec babel-node src/back/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,16 +25,23 @@
       "env"
     ]
   },
+  "dependencies": {
+    "express": "^4.16.2",
+    "glob": "^7.1.2",
+    "passport": "^0.4.0",
+    "passport-github2": "^0.1.11",
+    "request": "^2.83.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "^4.0.0-beta.3",
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.3.1",
-    "css-loader": "^0.28.7",
+    "css-loader": "^0.28.8",
     "ejs-compiled-loader": "^1.1.0",
     "file-loader": "^1.1.6",
     "font-awesome": "^4.7.0",
@@ -43,22 +51,15 @@
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "moment": "^2.20.1",
-    "nodemon": "^1.14.2",
+    "nodemon": "^1.14.11",
     "popper.js": "^1.13.0",
     "rimraf": "^2.6.2",
     "style-loader": "^0.19.1",
-    "tablesorter": "^2.29.2",
+    "tablesorter": "^2.29.3",
     "url-loader": "^0.6.2",
     "url-parse": "^1.2.0",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7",
+    "webpack-dev-server": "^2.11.0",
     "whatwg-fetch": "^2.0.3"
-  },
-  "dependencies": {
-    "express": "^4.16.2",
-    "glob": "^7.1.2",
-    "passport": "^0.4.0",
-    "passport-github2": "^0.1.11",
-    "request": "^2.83.0"
   }
 }

@@ -1,0 +1,38 @@
+{
+  "currency": {
+    "name": "Fonero",
+    "short_name": "Fonero",
+    "tech_name": "fonero",
+    "symbol": "FNO"
+  },
+  "links": {
+    "fonero.org": {
+      "icon": "fa fa-home",
+      "url": "http://fonero.org/"
+    },
+    "github.com": {
+      "icon": "fa fa-github",
+      "url": "https://github.com/fonero-project/fonero"
+    }
+  },
+  "exchanges": {
+    "stocks.exchange": {
+      "logo": "images/logo.stocks.exchange.png",
+      "url": "https://stocks.exchange/trade/ITNS/FNO"
+    }
+  },
+  "administrator": {
+    "email": "fonero-pools@morin.io",
+    "request_user": "tmorin",
+    "request_repo": "cryptonote-universal-pool-list"
+  },
+  "analytic": {
+    "ga": "UA-20179310-9"
+  },
+  "ads": {
+    "a-ads.com": "815490"
+  },
+  "worker": {
+    "interval_ms": 300000
+  }
+}

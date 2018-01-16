@@ -1,0 +1,6 @@
+{
+  "name": "pool.fonero.org",
+  "front": "http://pool.fonero.org",
+  "back": "http://pool.fonero.org:8117",
+  "location": "??"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "fno.cryptopool.space",
+  "front": "https://fno.cryptopool.space",
+  "back": "https://fno.cryptopool.space/api",
+  "location": "??",
+  "impl": "nodejs-pool"
+}
