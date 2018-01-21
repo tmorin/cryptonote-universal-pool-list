@@ -57,22 +57,23 @@ $(() => {
 
         const issueData = {
             title: `[${host}] - ${action} - ${name}`,
-            body: body.join('\n'),
-            labels: ['servers']
+            body: body.join('\n')
         };
 
         $forms.find('input, textarea, button').attr('disabled', '');
         $forms.find('button i').addClass('fa-spin');
 
         new GitHub({token}).getIssues(repoUser, repoName).createIssue(issueData)
-            .then(() => {
+            .then(result => {
                 $requestStep3Dialog.addClass('success').removeClass('failure');
+                return result.data && result.data.html_url;
             })
             .catch(err => {
                 console.error(err);
                 $requestStep3Dialog.removeClass('success').addClass('failure');
             })
-            .then(() => {
+            .then(url => {
+                $('#github-issue-link').attr('href', url);
                 $requestStep2Dialog
                     .one('hidden.bs.modal', () => $requestStep3Dialog.modal('show'))
                     .modal('hide');
@@ -85,7 +86,6 @@ $(() => {
         $(window).one('hashchange', evt => evt.preventDefault());
         location.hash = '';
         const context = JSON.parse(hash.replace('#login-success=', ''));
-        console.log('context', context);
         $('meta[property="x:github:accessToken"]').attr('content', context.accessToken);
         $('meta[property="x:github:username"]').attr('content', context.username);
         $requestStep2Dialog.modal('show');
