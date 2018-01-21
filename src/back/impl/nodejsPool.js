@@ -1,7 +1,5 @@
 import {httpGet} from '../utils';
-import {conf, HTTP_TIMEOUT} from '../config';
-
-const HTTP_OPTIONS = {timeout: HTTP_TIMEOUT};
+import {conf, HTTP_OPTIONS} from '../config';
 
 export function fetchNodejsPoolImpl(server) {
     const configUrl = `${server.back}/config`;

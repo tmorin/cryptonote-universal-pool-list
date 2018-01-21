@@ -1,14 +1,15 @@
 import request from 'request';
-import {HTTP_TIMEOUT} from '../config';
+import {HTTP_OPTIONS} from '../config';
 
 export function fetchDefaultImpl(server) {
     return new Promise((resolve) => {
         const url = `${server.back}/stats`;
-        request.get(url, {timeout: HTTP_TIMEOUT}, (err, res) => {
+        request.get(url, HTTP_OPTIONS, (err, res) => {
             try {
                 if (err) {
 
-                    console.error(err);
+                    console.warn(`${url} returned an error`);
+                    console.warn(err);
                     resolve(Object.assign({
                         error: err.message
                     }, server));
@@ -40,7 +41,7 @@ export function fetchDefaultImpl(server) {
 export function checkAddressFromDefaultServer(server, address) {
     return new Promise((resolve) => {
         const url = `${server.back}/stats_address?address=${address}&longpoll=false`;
-        request.get(url, {timeout: HTTP_TIMEOUT}, (err, res) => {
+        request.get(url, HTTP_OPTIONS, (err, res) => {
             try {
                 if (err) {
                     console.error(err);
