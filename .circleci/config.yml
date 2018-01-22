@@ -32,7 +32,8 @@ workflows:
           requires:
            - build
       - deploy:
-          branches:
-            only: production
+          filters:
+            branches:
+              only: production
           requires:
             - hold
