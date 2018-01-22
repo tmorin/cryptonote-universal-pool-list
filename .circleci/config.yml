@@ -4,9 +4,18 @@ jobs:
     - setup_remote_docker
     docker:
       - image: circleci/node:latest
+    working_directory: ~/repo
     steps:
       - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
       - run: scripts/build.sh
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
   deploy:
     steps:
       - checkout
