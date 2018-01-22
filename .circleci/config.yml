@@ -29,13 +29,9 @@ workflows:
   build_and_deploy:
     jobs:
       - build
-      - hold:
-          type: approval
-          requires:
-           - build
           filters:
             branches:
-              only: production
+              ignore: production
       - deploy:
           filters:
             branches:
