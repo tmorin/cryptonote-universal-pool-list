@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-IMAGE_NAME="thibaultmorin/cryptonote-universal-pool-list:${CIRCLE_TAG:=CIRCLE_BRANCH}"
+TAG=$CIRCLE_TAG
+BRANCH=$CIRCLE_BRANCH
+IMAGE_NAME="thibaultmorin/cryptonote-universal-pool-list:${TAG:=BRANCH}"
 echo "IMAGE_NAME: $IMAGE_NAME"
 
 echo "building $IMAGE_NAME"
