@@ -5,7 +5,6 @@
   "private": true,
   "main": "lib/index.js",
   "scripts": {
-    "deploy": "scripts/deploy.sh",
     "start": "node lib/index.js",
     "build": "rimraf lib && babel src/back -d lib && webpack -p",
     "w:front": "webpack-dev-server --open --hot --inline",
