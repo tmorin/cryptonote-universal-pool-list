@@ -1,13 +1,11 @@
 #!/usr/bin/env sh
 
-PKG_VERSION=`grep "\"version\" *: *\"[0-9]*\.[0-9]*\.[0-9]*\" *," package.json | sed "s/\"version\" *: *\"//i;s/\" *,//i;s/ //g;"`
+PKG_VERSION=`grep "\"version\" *: *\".*\" *," package.json | sed "s/\"version\" *: *\"//i;s/\" *,//i;s/ //g;"`
 CURRENCY=$1
 GITHUB_CLIENT_ID=$2
 GITHUB_CLIENT_SECRET=$3
 
-REMOTE_CMD="PKG_VERSION=$PKG_VERSION; CURRENCY=$CURRENCY; GITHUB_CLIENT_ID=$GITHUB_CLIENT_ID; GITHUB_CLIENT_SECRET=$GITHUB_CLIENT_SECRET; bash -s"
-
-ssh -oStrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} ${REMOTE_CMD} << 'EOF'
+ssh -oStrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "PKG_VERSION=$PKG_VERSION CURRENCY=$CURRENCY GITHUB_CLIENT_ID=$GITHUB_CLIENT_ID GITHUB_CLIENT_SECRET=$GITHUB_CLIENT_SECRET bash -s" << 'EOF'
 
 IMAGE_NAME="thibaultmorin/cryptonote-universal-pool-list:$PKG_VERSION"
 CONTAINER_NAME="$CURRENCY-universal-pool-list"
