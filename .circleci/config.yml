@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    type: docker
     docker:
       - image: circleci/node:latest
     working_directory: ~/repo
@@ -18,7 +17,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
   deploy:
-    type: docker
+    docker:
+      - image: circleci/node:latest
     steps:
       - setup_remote_docker
       - checkout
