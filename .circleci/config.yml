@@ -6,6 +6,7 @@ jobs:
       - image: circleci/node:latest
     working_directory: ~/repo
     steps:
+      - run: sudo apt install libboost-dev
       - checkout
       - restore_cache:
           keys:
