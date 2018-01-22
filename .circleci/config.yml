@@ -22,9 +22,9 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: ssh $SSH_USER@$SSH_HOST 'bash -s' < scripts/deploy.sh bitsum 10cc5092cb4d674c33b5 $BITSUM_GITHUB_CLIENT_SECRET
-      - run: ssh $SSH_USER@$SSH_HOST 'bash -s' < scripts/deploy.sh leviarcoin c0d8828df1ed3e2df214 $LEVIARCOIN_GITHUB_CLIENT_SECRET
-      - run: ssh $SSH_USER@$SSH_HOST 'bash -s' < scripts/deploy.sh fonero 6d839065d4608de7a6eb $FONERO_GITHUB_CLIENT_SECRET
+      - run: ssh -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash -s' < scripts/deploy.sh bitsum 10cc5092cb4d674c33b5 $BITSUM_GITHUB_CLIENT_SECRET
+      - run: ssh -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash -s' < scripts/deploy.sh leviarcoin c0d8828df1ed3e2df214 $LEVIARCOIN_GITHUB_CLIENT_SECRET
+      - run: ssh -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash -s' < scripts/deploy.sh fonero 6d839065d4608de7a6eb $FONERO_GITHUB_CLIENT_SECRET
 
 workflows:
   version: 2
