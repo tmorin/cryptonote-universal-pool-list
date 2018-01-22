@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-IMAGE_NAME="thibaultmorin/cryptonote-universal-pool-list:${CIRCLE_TAG:=$CIRCLE_BRANCH}"
+IMAGE_VERSION=`echo ${CIRCLE_TAG:=$CIRCLE_BRANCH} | sed -e "s/^v//"`
+IMAGE_NAME="thibaultmorin/cryptonote-universal-pool-list:${IMAGE_VERSION}"
 echo "CIRCLE_TAG: $CIRCLE_TAG"
 echo "CIRCLE_BRANCH: $CIRCLE_BRANCH"
 echo "IMAGE_NAME: $IMAGE_NAME"
