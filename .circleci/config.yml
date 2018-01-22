@@ -18,6 +18,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
   deploy:
+    type: docker
     steps:
       - setup_remote_docker
       - checkout
