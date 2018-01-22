@@ -36,5 +36,3 @@ workflows:
           filters:
             branches:
               only: production
-          requires:
-            - hold
