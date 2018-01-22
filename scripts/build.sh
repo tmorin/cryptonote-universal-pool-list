@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-TAG=$CIRCLE_TAG
-BRANCH=$CIRCLE_BRANCH
-IMAGE_NAME="thibaultmorin/cryptonote-universal-pool-list:${TAG:-BRANCH}"
+IMAGE_NAME="thibaultmorin/cryptonote-universal-pool-list:${CIRCLE_TAG:=$CIRCLE_BRANCH}"
+echo "CIRCLE_TAG: $CIRCLE_TAG"
+echo "CIRCLE_BRANCH: $CIRCLE_BRANCH"
 echo "IMAGE_NAME: $IMAGE_NAME"
 
 echo "building $IMAGE_NAME"
