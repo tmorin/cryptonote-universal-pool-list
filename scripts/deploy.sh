@@ -1,11 +1,15 @@
 #!/usr/bin/env sh
 
 PKG_VERSION=`grep "\"version\" *: *\"[0-9]*\.[0-9]*\.[0-9]*\" *," package.json | sed "s/\"version\" *: *\"//i;s/\" *,//i;s/ //g;"`
-IMAGE_NAME="thibaultmorin/cryptonote-universal-pool-list:$PKG_VERSION"
-
 CURRENCY=$1
 GITHUB_CLIENT_ID=$2
 GITHUB_CLIENT_SECRET=$3
+
+REMOTE_CMD="PKG_VERSION=$PKG_VERSION; CURRENCY=$CURRENCY; GITHUB_CLIENT_ID=$GITHUB_CLIENT_ID; GITHUB_CLIENT_SECRET=$GITHUB_CLIENT_SECRET; bash -s"
+
+ssh -oStrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} ${REMOTE_CMD} << 'EOF'
+
+IMAGE_NAME="thibaultmorin/cryptonote-universal-pool-list:$PKG_VERSION"
 CONTAINER_NAME="$CURRENCY-universal-pool-list"
 VIRTUAL_HOST="$CURRENCY-pools.morin.io,$CURRENCY-pools.containers"
 VIRTUAL_PORT=8888
@@ -24,7 +28,6 @@ echo "VIRTUAL_PORT: $VIRTUAL_PORT"
 echo "LETSENCRYPT_HOST: $LETSENCRYPT_HOST"
 echo "LETSENCRYPT_EMAIL: $LETSENCRYPT_EMAIL"
 
-echo "deploying $IMAGE_NAME"
 docker pull ${IMAGE_NAME}
 docker rm -f ${CONTAINER_NAME}
 docker run -d --network=containers --restart always --name ${CONTAINER_NAME} \
@@ -38,3 +41,4 @@ docker run -d --network=containers --restart always --name ${CONTAINER_NAME} \
     -e GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET} \
     -e BASE_URL=${BASE_URL} \
     ${IMAGE_NAME}
+EOF
