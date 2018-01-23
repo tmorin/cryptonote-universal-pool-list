@@ -9,6 +9,9 @@ import './request';
 
 $('body').css({'display': 'block'});
 $('[data-toggle="tooltip"]').tooltip();
+$('#navbar').on('click', '.nav-link', evt => {
+    $(evt.delegateTarget).find('[data-toggle="collapse"]:not(.collapsed)').click()
+});
 
 function refreshAll() {
     return fetchServers()
