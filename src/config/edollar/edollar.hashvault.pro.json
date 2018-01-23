@@ -1,0 +1,7 @@
+{
+  "name": "edollar.hashvault.pro",
+  "front": "https://edollar.hashvault.pro",
+  "back": "https://edollar.hashvault.pro/api",
+  "location": "RU",
+  "impl": "nodejs-pool"
+}

@@ -1,0 +1,32 @@
+{
+  "currency": {
+    "name": "Electronic Dollar",
+    "short_name": "Edollar",
+    "tech_name": "edollar",
+    "symbol": "EDC"
+  },
+  "links": {
+    "edollar.cash": {
+      "icon": "fa fa-home",
+      "url": "https://edollar.cash"
+    },
+    "github.com": {
+      "icon": "fa fa-github",
+      "url": "https://github.com/edollar-project"
+    }
+  },
+  "administrator": {
+    "email": "edollar-pools@morin.io",
+    "request_user": "tmorin",
+    "request_repo": "cryptonote-universal-pool-list"
+  },
+  "analytic": {
+    "ga": "UA-20179310-9"
+  },
+  "ads": {
+    "a-ads.com": "822002"
+  },
+  "worker": {
+    "interval_ms": 300000
+  }
+}
