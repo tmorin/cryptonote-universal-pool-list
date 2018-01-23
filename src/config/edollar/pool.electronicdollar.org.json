@@ -1,0 +1,6 @@
+{
+  "name": "pool.electronicdollar.org",
+  "front": "http://pool.electronicdollar.org",
+  "back": "http://pool.electronicdollar.org:22022",
+  "location": "??"
+}

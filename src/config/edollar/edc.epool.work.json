@@ -1,0 +1,6 @@
+{
+  "name": "edc.epool.work",
+  "front": "http://edc.epool.work",
+  "back": "http://mine.epool.work:22022",
+  "location": "??"
+}
