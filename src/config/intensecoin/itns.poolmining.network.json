@@ -1,0 +1,6 @@
+{
+  "name": "itns.poolmining.network",
+  "front": "http://itns.poolmining.network",
+  "back": "http://itns.poolmining.network:8117",
+  "location": "FR"
+}
