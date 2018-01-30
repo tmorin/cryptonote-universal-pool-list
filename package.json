@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node lib/index.js",
     "build": "rimraf lib && babel src/back -d lib && webpack -p",
+    "push": "scripts/push.sh",
     "release:patch": "scripts/release.sh patch",
     "release:minor": "scripts/release.sh minor",
     "w:front": "webpack-dev-server --open --hot --inline",
