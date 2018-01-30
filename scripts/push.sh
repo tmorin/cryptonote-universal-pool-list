@@ -7,5 +7,6 @@ git checkout -b production origin/production
 git checkout production
 
 git merge origin/master
+git push
 
 git checkout master
