@@ -1,7 +1,0 @@
-{
-  "name": "intense-pool.myner.io",
-  "front": "http://intense-pool.myner.io",
-  "back": "http://intense-pool.myner.io/api",
-  "location": "US",
-  "impl": "nodejs-pool"
-}
