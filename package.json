@@ -7,6 +7,8 @@
   "scripts": {
     "start": "node lib/index.js",
     "build": "rimraf lib && babel src/back -d lib && webpack -p",
+    "release:patch": "scripts/release.sh patch",
+    "release:minor": "scripts/release.sh minor",
     "w:front": "webpack-dev-server --open --hot --inline",
     "w:back:edc": "CURRENCY=edollar nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
     "w:back:itns": "CURRENCY=intensecoin nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
