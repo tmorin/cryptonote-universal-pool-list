@@ -2,5 +2,6 @@
   "name": "pool.leviarcoin.org",
   "front": "https://pool.leviarcoin.org",
   "back": "https://pool.leviarcoin.org:9117",
-  "location": "??"
+  "location": "??",
+  "impl": "nodejs-pool"
 }
