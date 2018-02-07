@@ -14,7 +14,6 @@
     "w:back:edc": "CURRENCY=edollar nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
     "w:back:itns": "CURRENCY=intensecoin nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
     "w:back:xlc": "CURRENCY=leviarcoin nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
-    "w:back:bsm": "CURRENCY=bitsum nodemon --watch src --ignore src/front --exec babel-node src/back/index.js",
     "w:back:fno": "CURRENCY=fonero nodemon --watch src --ignore src/front --exec babel-node src/back/index.js"
   },
   "repository": {
