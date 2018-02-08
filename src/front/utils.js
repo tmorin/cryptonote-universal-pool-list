@@ -9,7 +9,12 @@ export function getReadableHashRateString(hashrate) {
 }
 
 export function getReadableCoins(stats, coins, digits, withoutSymbol) {
-    const amount = (parseInt(coins || 0) / stats.config.coinUnits).toFixed(digits || stats.config.coinUnits.toString().length - 1);
+    let amount;
+    if (stats.config.min_denom) {
+        amount = (parseInt(coins || 0) / 100000000).toFixed(digits || stats.config.min_denom.toString().length - 1);
+    } else {
+        amount = (parseInt(coins || 0) / stats.config.coinUnits).toFixed(digits || stats.config.coinUnits.toString().length - 1);
+    }
     return amount + (withoutSymbol ? '' : (' ' + stats.config.symbol));
 }
 

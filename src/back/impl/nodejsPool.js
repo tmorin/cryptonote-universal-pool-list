@@ -25,7 +25,7 @@ export function fetchNodejsPoolImpl(server) {
                 fee: config.pplns_fee,
                 minPaymentThreshold: config.min_wallet_payout,
                 coin: conf('currency').tech_name,
-                coinUnits: config.min_denom * 1000,
+                min_denom: config.min_denom,
                 symbol: conf('currency').symbol
             },
             pool: {
