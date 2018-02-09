@@ -8,15 +8,17 @@ import {Strategy as GitHubStrategy} from 'passport-github2';
 
 const app = express();
 
-passport.use(new GitHubStrategy({
-        clientID: GITHUB_CLIENT_ID,
-        clientSecret: GITHUB_CLIENT_SECRET,
-        callbackURL: CALLBACK_URL
-    },
-    (accessToken, refreshToken, {username}, done) => {
-        done(null, {accessToken, username});
-    }
-));
+if (GITHUB_CLIENT_ID) {
+    passport.use(new GitHubStrategy({
+            clientID: GITHUB_CLIENT_ID,
+            clientSecret: GITHUB_CLIENT_SECRET,
+            callbackURL: CALLBACK_URL
+        },
+        (accessToken, refreshToken, {username}, done) => {
+            done(null, {accessToken, username});
+        }
+    ));
+}
 
 passport.serializeUser((user, done) => done(null, user));
 

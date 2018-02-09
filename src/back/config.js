@@ -14,13 +14,19 @@ console.log('CURRENCY', CURRENCY);
 
 export const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 if (!GITHUB_CLIENT_ID) {
-    throw new Error('No GITHUB_CLIENT_ID provided as environment variable!');
+    if (PRODUCTION) {
+        throw new Error('No GITHUB_CLIENT_ID provided as environment variable!');
+    }
+    console.warn('No GITHUB_CLIENT_ID provided as environment variable!');
 }
 console.log('GITHUB_CLIENT_ID', GITHUB_CLIENT_ID);
 
 export const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 if (!GITHUB_CLIENT_SECRET) {
-    throw new Error('No GITHUB_CLIENT_SECRET provided as environment variable!');
+    if (PRODUCTION) {
+        throw new Error('No GITHUB_CLIENT_SECRET provided as environment variable!');
+    }
+    console.warn('No GITHUB_CLIENT_SECRET provided as environment variable!');
 }
 console.log('GITHUB_CLIENT_SECRET', GITHUB_CLIENT_SECRET);
 
