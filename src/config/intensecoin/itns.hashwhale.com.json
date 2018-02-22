@@ -2,5 +2,6 @@
   "name": "itns.hashwhale.com",
   "front": "http://intense.hashwhale.com",
   "back": "http://intense.hashwhale.com:8117",
-  "location": "EU"
+  "location": "EU",
+  "disabled": true
 }

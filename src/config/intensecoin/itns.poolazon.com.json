@@ -2,5 +2,6 @@
   "name": "itns.poolazon.com",
   "front": "https://itns.poolazon.com",
   "back": "https://api.poolazon.com/api",
-  "location": "FR/UK/DE/ES"
+  "location": "FR/UK/DE/ES",
+  "disabled": true
 }
