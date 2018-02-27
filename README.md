@@ -169,6 +169,8 @@ The content of a file is a JSON document describing:
 - the URL of the front
 - the URL of the back
 - the location
+- the implementation: `nodejs-pool` or `cryptonote-universal-pool`, by default it's `cryptonote-universal-pool`
+- the boolean disabled
 
 For instance:
 ```json
@@ -194,7 +196,6 @@ To customize the domain name and SSL configuration, the following environment va
 [nginx-proxy]: https://hub.docker.com/r/jwilder/nginx-proxy
 [docker-letsencrypt-nginx-proxy-companion]: https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion
 
-
 ## Development tasks
 
 Install the dependencies
@@ -204,7 +205,7 @@ npm run build
 
 Start the back in development mode
 ```bash
-npm run watch:back
+npm run watch:back:<currency symbol>
 ```
 
 Start the front in development mode

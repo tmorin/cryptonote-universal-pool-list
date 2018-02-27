@@ -1,0 +1,53 @@
+{
+  "currency": {
+    "name": "Sumokoin",
+    "short_name": "Sumokoin",
+    "tech_name": "sumokoin",
+    "symbol": "SUMO"
+  },
+  "links": {
+    "www.sumokoin.org": {
+      "icon": "fa fa-home",
+      "url": "https://www.sumokoin.org"
+    },
+    "coinmarketcap.com": {
+      "icon": "fa fa-money",
+      "url": "https://coinmarketcap.com/currencies/sumokoin"
+    },
+    "github.com": {
+      "icon": "fa fa-github",
+      "url": "https://github.com/sumoprojects/sumokoin"
+    }
+  },
+  "exchanges": {
+    "bittrex": {
+      "logo": "images/cryptopia.co.nz.png",
+      "url": "https://www.cryptopia.co.nz/Exchange/?market=SUMO_BTC"
+    }
+  },
+  "coinmarket": {
+    "currency": "sumokoin",
+    "base": "USD",
+    "secondary": "BTC",
+    "ticker": "true",
+    "rank": "true",
+    "marketcap": "true",
+    "volume": "true",
+    "stats": "USD",
+    "statsticker": "false"
+  },
+  "administrator": {
+    "email": "sumokoin-pools@morin.io",
+    "request_user": "tmorin",
+    "request_repo": "cryptonote-universal-pool-list"
+  },
+  "analytic": {
+    "ga": "UA-20179310-9"
+  },
+  "ads": {
+    "a-ads.com": "851742"
+  },
+  "worker": {
+    "interval_ms": 300000
+  }
+}
