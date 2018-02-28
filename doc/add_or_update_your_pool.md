@@ -14,16 +14,13 @@ Then checkout it locally.
 The second step is to setup and start the dev environment.
 
 Install the dependencies:
+
 ```bash
 npm install
 ```
 
-Start the frontend in watching mode:
-```bash
-npm run w:front
-```
-
 From another terminal, start the backend in watching mode:
+
 ```bash
 npm run w:back:<currency symbol>
 ```
@@ -36,6 +33,22 @@ Presently, the currency symbols are:
 - fno
 - sumo
 
+Start the frontend in watching mode:
+
+```bash
+npm run w:front
+```
+
+Once the page is opened go to https://localhost:9000/<currency name>.html
+
+The currency names are:
+
+- edollar
+- fonero
+- intensecoin
+- leviarcoin
+- sumokoin
+
 ## Apply your change
 
 ### How-to add a new pool?
@@ -44,6 +57,7 @@ New pool are defined in a new JSON file.
 The path is `src/config/<currency>/<domain name>.json`.
 
 The structure is:
+
 ```json
 {
     "name": "<domain name>",
@@ -56,6 +70,7 @@ The structure is:
 ```
 
 For instance, about a pool backed by nodejs-pool:
+
 ```json
 {
     "name": "edollar.hashvault.pro",
@@ -68,6 +83,7 @@ For instance, about a pool backed by nodejs-pool:
 ```
 
 For instance, about a pool backed by cryptonote-universal-pool:
+
 ```json
 {
     "name": "cryptonoteminingpool.com",
