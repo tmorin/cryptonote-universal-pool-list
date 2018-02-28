@@ -1,6 +1,6 @@
 {
   "name": "intensecoin.net",
   "front": "https://intensecoin.net",
-  "back": "http://35.205.108.96:8111",
+  "back": "https://pool.intensecoin.net/api",
   "location": "EU"
 }
