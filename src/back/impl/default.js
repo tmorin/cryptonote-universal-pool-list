@@ -16,9 +16,15 @@ export function fetchDefaultImpl(server) {
 
                 } else if (res.statusCode >= 200 && res.statusCode < 300) {
 
-                    resolve(Object.assign({
-                        stats: JSON.parse(res.body)
-                    }, server));
+                    const stats = JSON.parse(res.body);
+                    const networkHashRate = stats.network.difficulty / stats.config.coinDifficultyTarget;
+                    const poolHashRate = stats.pool.hashrate;
+                    const percent = poolHashRate * 100 / networkHashRate;
+                    const hashRate = {
+                        network: networkHashRate, poolHash: poolHashRate, percent
+                    };
+
+                    resolve(Object.assign({stats, hashRate}, server));
 
                 } else {
 

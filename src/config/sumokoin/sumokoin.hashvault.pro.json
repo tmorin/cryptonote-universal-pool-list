@@ -1,0 +1,7 @@
+{
+  "name": "sumokoin.hashvault.pro",
+  "front": "https://sumokoin.hashvault.pro",
+  "back": "https://sumokoin.hashvault.pro/api",
+  "location": "RU",
+  "impl": "nodejs-pool"
+}

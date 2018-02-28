@@ -1,0 +1,7 @@
+{
+  "name": "leviarcoin.hashvault.pro",
+  "front": "https://leviarcoin.hashvault.pro",
+  "back": "https://leviarcoin.hashvault.pro/api",
+  "location": "RU",
+  "impl": "nodejs-pool"
+}

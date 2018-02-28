@@ -2,6 +2,6 @@
   "name": "fonero.hashvault.pro",
   "front": "https://fonero.hashvault.pro",
   "back": "https://fonero.hashvault.pro/api",
-  "location": "??",
+  "location": "RU",
   "impl": "nodejs-pool"
 }

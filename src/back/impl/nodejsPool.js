@@ -4,9 +4,11 @@ import {conf, HTTP_OPTIONS} from '../config';
 export function fetchNodejsPoolImpl(server) {
     const configUrl = `${server.back}/config`;
     const statsUrl = `${server.back}/pool/stats`;
+    const networkUrl = `${server.back}/network/stats`;
     return Promise.all([
         httpGet(configUrl, HTTP_OPTIONS),
-        httpGet(statsUrl, HTTP_OPTIONS)
+        httpGet(statsUrl, HTTP_OPTIONS),
+        httpGet(networkUrl, HTTP_OPTIONS)
     ]).then(responses => {
         const fetchSucceed = responses
             .filter(res => res.statusCode >= 200 && res.statusCode < 300)
@@ -19,7 +21,18 @@ export function fetchNodejsPoolImpl(server) {
         }
 
         const config = JSON.parse(responses[0].body);
-        const stats = JSON.parse(responses[1].body);
+        const poolStats = JSON.parse(responses[1].body);
+        const networkStats = JSON.parse(responses[2].body);
+
+        const networkHashRate = Math.floor(networkStats.difficulty / 240);
+        const poolHashRate = poolStats.pool_statistics.hashRate;
+        const percent = poolHashRate * 100 / networkHashRate;
+        const hashRate = {
+            network: networkHashRate,
+            poolHash: poolHashRate,
+            percent
+        };
+
         const result = {
             config: {
                 fee: config.pplns_fee,
@@ -29,17 +42,17 @@ export function fetchNodejsPoolImpl(server) {
                 symbol: conf('currency').symbol
             },
             pool: {
-                hashrate: stats.pool_statistics.hashRate,
-                miners: stats.pool_statistics.miners,
-                totalBlocks: stats.pool_statistics.totalBlocksFound,
-                totalMinersPaid: stats.pool_statistics.totalMinersPaid,
-                lastBlockFound: stats.pool_statistics.lastBlockFoundTime * 1000,
-                totalPayments: stats.pool_statistics.totalPayments
+                hashrate: poolStats.pool_statistics.hashRate,
+                miners: poolStats.pool_statistics.miners,
+                totalBlocks: poolStats.pool_statistics.totalBlocksFound,
+                totalMinersPaid: poolStats.pool_statistics.totalMinersPaid,
+                lastBlockFound: poolStats.pool_statistics.lastBlockFoundTime * 1000,
+                totalPayments: poolStats.pool_statistics.totalPayments
             }
         };
 
         return Object.assign({
-            stats: result
+            stats: result, hashRate
         }, server);
     }).catch(error => {
         console.error(error);

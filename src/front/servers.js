@@ -48,6 +48,9 @@ export function fetchServers() {
                     const loc = server.location || 'unknown';
                     const locCell = shorten(loc);
                     const locTooltip = loc !== locCell ? loc : null;
+                    const attack51 = server.hashRate.percent > 51;
+                    const hashRateTl = attack51 ? 'The pool handles too much hash rate!' : '';
+                    const hashRateClass = attack51 ? 'text-danger' : '';
                     return `
                         <tr data-name="${ server.key || 'unknown' }">
                         <td class="text-center"><i class="fa fa-fw fa-check"></i></td>
@@ -55,7 +58,7 @@ export function fetchServers() {
                         <td data-toggle="${locTooltip && 'tooltip'}" title="${locTooltip}">${ shorten(server.location) || 'unknown' }</td>
                         <td data-value="${server.stats.config.fee}" class="text-right">${ floatToString(server.stats.config.fee) || 0 }%</td>
                         <td class="text-right">${ getReadableCoins(server.stats, server.stats.config.minPaymentThreshold, 3, true) }</td>
-                        <td data-value="${server.stats.pool.hashrate}" class="text-right">${ getReadableHashRateString(server.stats.pool.hashrate) }</td>
+                        <td data-toggle="${attack51 && 'tooltip'}" data-value="${ server.stats.pool.hashrate }" title="${hashRateTl}" class="text-right ${hashRateClass}">${ getReadableHashRateString(server.stats.pool.hashrate) } <small>${ floatToString(server.hashRate.percent) || 0 }%</small></td>
                         <td class="text-right">${ server.stats.pool.totalBlocks || '0' }</td>
                         <td class="text-right">${ moment(parseInt(server.stats.pool.lastBlockFound)).fromNow() }</td>
                         <td class="text-right">${ server.stats.pool.miners }</td>

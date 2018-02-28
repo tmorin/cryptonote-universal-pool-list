@@ -19,7 +19,7 @@ export function getReadableCoins(stats, coins, digits, withoutSymbol) {
 }
 
 export function floatToString(float) {
-    return float.toFixed(6).replace(/[0\.]+$/, '');
+    return float.toFixed(2).replace(/[0\.]+$/, '');
 }
 
 export function shorten(text = '', maxLength = 9) {
