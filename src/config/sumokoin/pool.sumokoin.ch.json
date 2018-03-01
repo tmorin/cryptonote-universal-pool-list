@@ -1,0 +1,8 @@
+{
+  "name": "pool.sumokoin.ch",
+  "front": "https://pool.sumokoin.ch/",
+  "back": "https://pool.sumokoin.ch:8888",
+  "location": "DE",
+  "impl": "cryptonote-universal-pool",
+  "disabled": false
+}
