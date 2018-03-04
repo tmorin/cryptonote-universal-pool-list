@@ -36,10 +36,15 @@ It is about the mined currency. i.e. the name, symbol etc.
   "currency": {
     "name": "Intense Coin",
     "short_name": "Intense",
-    "symbol": "ITNS"
+    "tech_name": "intensecoin",
+    "symbol": "ITNS",
+    "difficultyTarget": 120
   }
 }
 ```
+
+`tech_name` is used to locate the config directory (`src/config/<tech_name>`) as well as the domain name (`.circleci/config.yml`).
+`difficultyTarget` is used to estimate the network hashrate.
 
 #### links
 
@@ -205,7 +210,7 @@ npm run build
 
 Start the back in development mode
 ```bash
-npm run watch:back:<currency symbol>
+npm run watch:back:<currency symbol lower case>
 ```
 
 Start the front in development mode
@@ -220,7 +225,7 @@ npm run build
 
 Call the deploy script to build and start the updated container.
 ```bash
-npm run deploy
+npm run deploy <tech_name> <GITHUB_CLIENT_ID> <GITHUB_CLIENT_SECRET>
 ```
 
 ## Donations
