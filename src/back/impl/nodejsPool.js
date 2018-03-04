@@ -24,7 +24,7 @@ export function fetchNodejsPoolImpl(server) {
         const poolStats = JSON.parse(responses[1].body);
         const networkStats = JSON.parse(responses[2].body);
 
-        const networkHashRate = Math.floor(networkStats.difficulty / 240);
+        const networkHashRate = Math.floor(networkStats.difficulty / conf('currency').difficultyTarget);
         const poolHashRate = poolStats.pool_statistics.hashRate;
         const percent = poolHashRate * 100 / networkHashRate;
         const hashRate = {

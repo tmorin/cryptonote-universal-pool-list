@@ -3,7 +3,8 @@
     "name": "Electronic Dollar",
     "short_name": "Edollar",
     "tech_name": "edollar",
-    "symbol": "EDC"
+    "symbol": "EDC",
+    "difficultyTarget": 120
   },
   "links": {
     "edollar.cash": {

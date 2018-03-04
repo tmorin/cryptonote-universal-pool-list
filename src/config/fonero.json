@@ -3,7 +3,8 @@
     "name": "Fonero",
     "short_name": "Fonero",
     "tech_name": "fonero",
-    "symbol": "FNO"
+    "symbol": "FNO",
+    "difficultyTarget": 120
   },
   "links": {
     "fonero.org": {

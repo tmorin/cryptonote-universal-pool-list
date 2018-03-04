@@ -1,5 +1,5 @@
 import request from 'request';
-import {HTTP_OPTIONS} from '../config';
+import {HTTP_OPTIONS, conf} from '../config';
 
 export function fetchDefaultImpl(server) {
     return new Promise((resolve) => {
@@ -15,7 +15,6 @@ export function fetchDefaultImpl(server) {
                     }, server));
 
                 } else if (res.statusCode >= 200 && res.statusCode < 300) {
-
                     const stats = JSON.parse(res.body);
                     const networkHashRate = stats.network.difficulty / stats.config.coinDifficultyTarget;
                     const poolHashRate = stats.pool.hashrate;
