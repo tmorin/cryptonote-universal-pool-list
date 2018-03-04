@@ -1,0 +1,7 @@
+{
+  "name": "sumo.semipool.com",
+  "front": "https://sumo.semipool.com",
+  "back": "https://sumo-api.semipool.com",
+  "location": "FR",
+  "impl": "nodejs-pool"
+}
