@@ -1,0 +1,8 @@
+{
+  "name": "sumo.pandapool.nl",
+  "front": "http://sumo.pandapool.nl",
+  "back": "http://sumo.pandapool.nl:8118",
+  "location": "NL",
+  "impl": "cryptonote-universal-pool",
+  "disabled": false
+}
