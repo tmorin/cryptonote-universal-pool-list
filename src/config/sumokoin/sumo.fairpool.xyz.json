@@ -1,0 +1,8 @@
+{
+    "name": "FairPool",
+    "front": "https://sumo.fairpool.xyz",
+    "back": "https://sumo.fairpool.xyz/api",
+    "location": "US/EU",
+    "impl": "cryptonote-universal-pool",
+    "disabled": false
+}
