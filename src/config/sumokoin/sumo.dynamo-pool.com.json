@@ -1,0 +1,9 @@
+{
+    "name": "sumo.dynamo-pool.com",
+    "front": "https://sumo.dynamo-pool.com",
+    "back": "https://sumo-pool.dynamo-pool.com:8888/api",
+    "location": "CA",
+    "impl": "cryptonote-universal-pool",
+    "disabled": false
+}
+
