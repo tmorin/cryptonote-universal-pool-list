@@ -2,7 +2,7 @@
     "name": "sumo-pool.theskynet.xyz",
     "front": "https://sumo-pool.theskynet.xyz",
     "back": "https://sumo-pool.theskynet.xyz/api",
-    "location": "US/NL",
+    "location": "US/EU",
     "impl": "nodejs-pool",
     "disabled": false
 }
