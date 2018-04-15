@@ -1,0 +1,8 @@
+{
+    "name": "sumo-pool.theskynet.xyz",
+    "front": "https://sumo-pool.theskynet.xyz",
+    "back": "https://sumo-pool.theskynet.xyz/api",
+    "location": "US/NL",
+    "impl": "nodejs-pool",
+    "disabled": false
+}
