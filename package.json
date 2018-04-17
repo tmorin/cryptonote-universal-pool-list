@@ -1,6 +1,6 @@
 {
   "name": "cryptonote-universal-pool-list",
-  "version": "1.4.10",
+  "version": "1.4.11",
   "description": "The most comprehensive list of cryptonote-universal-pool's instances.",
   "private": true,
   "main": "lib/index.js",
