@@ -1,0 +1,8 @@
+{
+    "name": "sumo.miner.rocks",
+    "front": "https://sumo.miner.rocks",
+    "back": "https://sumo.miner.rocks/api",
+    "location": "EU",
+    "impl": "cryptonote-universal-pool",
+    "disabled": false
+}
