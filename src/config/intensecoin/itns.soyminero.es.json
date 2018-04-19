@@ -2,5 +2,6 @@
   "name": "itns.soyminero.es",
   "front": "http://itns.soyminero.es",
   "back": "http://itns.soyminero.es:8122",
-  "location": "US/BR/EU/IN/JP"
+  "location": "US/BR/EU/IN/JP",
+  "disabled": true
 }

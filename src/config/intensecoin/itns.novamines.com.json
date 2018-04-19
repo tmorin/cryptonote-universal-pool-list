@@ -2,5 +2,6 @@
   "name": "itns.novamines.com",
   "front": "http://itns.novamines.com",
   "back": "http://itns.novamines.com:8117",
-  "location": "US"
+  "location": "US",
+  "disabled": true
 }

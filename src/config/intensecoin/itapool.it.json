@@ -2,5 +2,6 @@
   "name": "itapool.it",
   "front": "http://www.itapool.it",
   "back": "http://46.37.13.140:8117",
-  "location": "EU"
+  "location": "EU",
+  "disabled": true
 }

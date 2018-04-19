@@ -2,5 +2,6 @@
   "name": "xlc.dpool.cc",
   "front": "http://xlc.dpool.cc",
   "back": "http://pool.xlc.dpool.cc:8117",
-  "location": "Asian"
+  "location": "Asian",
+  "disabled": true
 }

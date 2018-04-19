@@ -2,5 +2,6 @@
   "name": "edc.helium-mine.eu",
   "front": "http://edc.helium-mine.eu",
   "back": "http://helium.nazwa.pl:22022",
-  "location": "??"
+  "location": "??",
+  "disabled": true
 }

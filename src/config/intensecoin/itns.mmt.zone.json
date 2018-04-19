@@ -2,5 +2,6 @@
   "name": "itns.mmt.zone",
   "front": "http://itns.mmt.zone",
   "back": "http://itns.mmt.zone:8111",
-  "location": "UK"
+  "location": "UK",
+  "disabled": true
 }
