@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 export function getReadableHashRateString(hashrate) {
     const byteUnits = [' H', ' KH', ' MH', ' GH', ' TH', ' PH'];
     let i = 0;
@@ -11,7 +13,8 @@ export function getReadableHashRateString(hashrate) {
 export function getReadableCoins(stats, coins, digits, withoutSymbol) {
     let amount;
     if (stats.config.min_denom) {
-        amount = (parseInt(coins || 0) / 100000000).toFixed(digits || stats.config.min_denom.toString().length - 1);
+        const units = $('meta[property="x:coin:units"]').attr('content');
+        amount = (parseInt(coins || 0) / units).toFixed(digits || units.toString().length - 1);
     } else {
         amount = (parseInt(coins || 0) / stats.config.coinUnits).toFixed(digits || stats.config.coinUnits.toString().length - 1);
     }

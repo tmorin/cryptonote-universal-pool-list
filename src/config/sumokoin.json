@@ -4,7 +4,8 @@
     "short_name": "Sumokoin",
     "tech_name": "sumokoin",
     "symbol": "SUMO",
-    "difficultyTarget": 240
+    "difficultyTarget": 240,
+    "units": 1000000000
   },
   "links": {
     "www.sumokoin.org": {

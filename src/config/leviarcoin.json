@@ -4,7 +4,8 @@
     "short_name": "Leviarcoin",
     "tech_name": "leviarcoin",
     "symbol": "XLC",
-    "difficultyTarget": 60
+    "difficultyTarget": 60,
+    "units": 100000000
   },
   "links": {
     "leviarcoin.org": {

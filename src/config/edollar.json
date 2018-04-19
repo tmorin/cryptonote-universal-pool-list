@@ -4,7 +4,8 @@
     "short_name": "Edollar",
     "tech_name": "edollar",
     "symbol": "EDC",
-    "difficultyTarget": 120
+    "difficultyTarget": 120,
+    "units": 1000000000
   },
   "links": {
     "edollar.cash": {
