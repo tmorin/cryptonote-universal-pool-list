@@ -1,0 +1,8 @@
+{
+  "name": "sumokoin-pool.com",
+  "front": "https://sumokoin-pool.com/",
+  "back": "https://pool01.sumokoin-pool.com:8119",
+  "location": "US/EU",
+  "impl": "cryptonote-universal-pool",
+  "disabled": false
+}
