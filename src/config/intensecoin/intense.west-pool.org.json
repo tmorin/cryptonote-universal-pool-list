@@ -2,6 +2,6 @@
   "name": "intense.west-pool.org",
   "front": "https://intense.west-pool.org",
   "back": "https://intense.west-pool.org/api",
-  "location": "EU",
+  "location": "EU/US/IN/CN",
   "impl": "nodejs-pool"
 }
