@@ -42,3 +42,13 @@ workflows:
           filters:
             branches:
               only: production
+  nightly_deploy:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - production
+    jobs:
+      - deploy
