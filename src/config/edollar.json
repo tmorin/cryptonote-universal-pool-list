@@ -18,7 +18,7 @@
     }
   },
   "administrator": {
-    "email": "edollar-pools@morin.io",
+    "email": "pools@morin.io",
     "request_user": "tmorin",
     "request_repo": "cryptonote-universal-pool-list"
   },
