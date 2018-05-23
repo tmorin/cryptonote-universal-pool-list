@@ -2,5 +2,6 @@
   "name": "itns.nasf.eu",
   "front": "http://itns.nasf.eu",
   "back": "http://itns.nasf.eu:8118",
-  "location": "EU"
+  "location": "EU",
+  "disabled": true
 }

@@ -2,5 +2,6 @@
   "name": "Intense CryptoCoinMiningCo",
   "front": "http://intense.cryptocoinminingco.com",
   "back": "http://intense.cryptocoinminingco.com:8117",
-  "location": "US"
+  "location": "US",
+  "disabled": true
 }
