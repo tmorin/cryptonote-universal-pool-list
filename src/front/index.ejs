@@ -113,8 +113,13 @@
 
 <section id="ads" class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h2 class="text-center">Ads</h2>
-        <% if (ads && ads['a-ads.com']) { %>
+        <!--<h2 class="text-center">Ads</h2>-->
+        <div class="text-center">
+            <a href="https//www.genesis-mining.com/a/1934276" target="_blank">
+                <img width="300" height="250" src="images/genesis.gif" title="3% off with Genesis Mining" alt="3% off with Genesis Mining">
+            </a>
+        </div>
+        <% if (false && ads && ads['a-ads.com']) { %>
         <div class="text-center">
             <iframe data-aa='<%= ads['a-ads.com'] %>' src='//acceptable.a-ads.com/<%= ads['a-ads.com'] %>?size=Adaptive'
                     scrolling='no' style='border:0; padding:0;overflow:hidden' allowtransparency='false'
